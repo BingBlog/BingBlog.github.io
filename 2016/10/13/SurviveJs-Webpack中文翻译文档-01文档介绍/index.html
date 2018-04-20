@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>SurviveJs-Webpack中文翻译文档-01文档介绍 | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Introduction对于Web开发来说，Webpack 解决了一个最基本的问题－应用打包，进而简化了开发过程。Webpack可以对各类资源进行处理，例如JavaScript,CSS和HTML，将它们转化成浏览器可以低消耗处理的格式。解决了这个问题，也就让Web开发不在那么痛苦。。。 但是由于它复杂的配置驱动方法，Webpack并不是容易掌握的工具。本教程的目的就是帮助你开始学习Webpack，">
+<meta name="keywords" content="学习,SurviveJs,Webpack,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SurviveJs-Webpack中文翻译文档-01文档介绍">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-01文档介绍/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="Introduction对于Web开发来说，Webpack 解决了一个最基本的问题－应用打包，进而简化了开发过程。Webpack可以对各类资源进行处理，例如JavaScript,CSS和HTML，将它们转化成浏览器可以低消耗处理的格式。解决了这个问题，也就让Web开发不在那么痛苦。。。 但是由于它复杂的配置驱动方法，Webpack并不是容易掌握的工具。本教程的目的就是帮助你开始学习Webpack，">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SurviveJs-Webpack中文翻译文档-01文档介绍">
+<meta name="twitter:description" content="Introduction对于Web开发来说，Webpack 解决了一个最基本的问题－应用打包，进而简化了开发过程。Webpack可以对各类资源进行处理，例如JavaScript,CSS和HTML，将它们转化成浏览器可以低消耗处理的格式。解决了这个问题，也就让Web开发不在那么痛苦。。。 但是由于它复杂的配置驱动方法，Webpack并不是容易掌握的工具。本教程的目的就是帮助你开始学习Webpack，">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SurviveJs-Webpack中文翻译文档-01文档介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SurviveJs-Webpack中文翻译文档-01文档介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>对于Web开发来说，Webpack 解决了一个最基本的问题－应用打包，进而简化了开发过程。Webpack可以对各类资源进行处理，例如JavaScript,CSS和HTML，将它们转化成浏览器可以低消耗处理的格式。解决了这个问题，也就让Web开发不在那么痛苦。。。</p>
+<p>但是由于它复杂的配置驱动方法，Webpack并不是容易掌握的工具。本教程的目的就是帮助你开始学习Webpack，并且超越基础！</p>
+<h2 id="Webpack是个啥玩意儿？"><a href="#Webpack是个啥玩意儿？" class="headerlink" title="Webpack是个啥玩意儿？"></a>Webpack是个啥玩意儿？</h2><p>Web浏览器可以处理HTML,JavaScript和CSS。最简单的开发方式就是编写出浏览器直接处理的文件。但问题是，开发的应用最终变得笨重。在进行Web应用开发的时候我们也总会遇到这个问题。</p>
+<p>最原始的方式是将JavaScript代码都打包成一个文件然后浏览器仅加载一次。但是这还不够。你将会再次将文件拆分以便利于缓存。你甚至需要根据需求通过动态的依赖来加载各个模块儿。作为一个程序员，处理这个问题变得越来越复杂。</p>
+<p>Webpack就是用来解决这个问题的。它解决了前面所描述的所有问题。当然你也可以使用其它的工具，也可以达到相同的结果，很多情况下，也完全满足需要。任务管理，例如Grunt和Gulp，但是需要你手写很多配置文件。</p>
+<h3 id="Webpack如何解决了这些问题咧？"><a href="#Webpack如何解决了这些问题咧？" class="headerlink" title="Webpack如何解决了这些问题咧？"></a>Webpack如何解决了这些问题咧？</h3><p>Webpack采用了另外一种方式。它让你将你的项目视为一个依赖关系图。你可以在项目中的index.js文件中通过使用标准的<code>import</code>语法来加载所有依赖，这些依赖包括样式文件和其它资源。</p>
+<p>Webpack完成了所有的预处理然后生成了打包后的文件，当然，需要你来配置如何进行预处理。这些配置的声明方式很强大，但是也有一点儿难学。不过，只要你理解了Webpack的工作原理，它便会成为一个不可却少的工具。这本书就是让你越过最开始的那个小山坡。</p>
+<h2 id="我能学到啥子？"><a href="#我能学到啥子？" class="headerlink" title="我能学到啥子？"></a>我能学到啥子？</h2><p>这本书是对<em><a href="https://webpack.github.io/docs/" target="_blank" rel="external">Webpack的官方文档</a></em>的补充。尽管官方文档包含了很多资料，对于刚开始学习这个工具的开发者来说，它可能不是最简单的起步点。俗话说，“万事开头难”，这本书也许可以让你开始学习时不那么痛苦，如果你是有一定基础的使用者，本书也会让你温故而知新。</p>
+<p>您将学会开发一个基本的Webpack配置工具，可以分别达到开发和生产的目的。你也会学习很多先进的技术，是你从Webpack强大的功能中获益匪浅。</p>
+<h2 id="这本书咋组织的？"><a href="#这本书咋组织的？" class="headerlink" title="这本书咋组织的？"></a>这本书咋组织的？</h2><p>本书的前两章分别想你介绍了Webpack的基本概念。你将会根据你的特定需求开发一个基本的可扩展的配置工具。接下来的章节都是以任务为主线的，如果你忘了具体的Webpack实现方法，你可以参考这些内容。</p>
+<p>剩下的部分是一些先进技术的讨论。你将会学习：加载特定类型的资源，你也可以根据自己对Webpack分块机制的理解，学习利用这些进行包创作，编写自己的加载器。</p>
+<h2 id="这书写给那个看的撒？"><a href="#这书写给那个看的撒？" class="headerlink" title="这书写给那个看的撒？"></a>这书写给那个看的撒？</h2><p>希望你对JavaScrpt和Node.js有基本的掌握。对npm的使用水平也到了初级阶段。如果你对Webpack有一些了解，那就太棒了。读完此书，将会加强你对这些工具的理解。</p>
+<p>如果你是Webpack老手，你也能学到一些东西。浏览本书，你也会找到一些技术。我竭尽全力to cover even some of the knottier parts of the tool.</p>
+<p>如果你仍然有困惑，可以尝试从本书的社区中寻找帮助。如果你卡住了或者有些地方理解不了，我们可以提供帮助。你的任评价都将会使本书的质量得到提升。</p>
+<h2 id="这本书咋读？"><a href="#这本书咋读？" class="headerlink" title="这本书咋读？"></a>这本书咋读？</h2><p>如果你不是很了解Webpack,建议仔细阅读前两章。后面的可以浏览下，先看感兴趣的部分。如果你已经对Webpack有一定了解，涉猎并选择你觉得有价值的技术点进行学习。</p>
+<h2 id="咋这多版本？"><a href="#咋这多版本？" class="headerlink" title="咋这多版本？"></a>咋这多版本？</h2><p>由于本书不断创新的步伐，并经过很多修补和改进，所以有很多个版本。我通过本书<a href="http://survivejs.com/blog/" target="_blank" rel="external">官方博客</a>对新老版本信息进行发布，版本信心会告诉你各个版本的差异。通过Githun仓库检测也是一个很好的方法。推荐使用Github对比工具。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/survivejs/webpack/compare/v1.2.0...v1.3.3</div></pre></td></tr></table></figure></p>
+<p>在浏览器中输入改地址，页面会向你展示两个版本的提交信息。虽然包含了私有章节，但是也足以让你了解本书主要的改动。</p>
+<p>本书当前的本书是1.3.3</p>
+<p>本书是一项持续性的工作，非常欢迎通过各种渠道进行反馈。我将会基于需求来扩展本教程，使其可以更好的惠及你我他。你也可以为本书贡献出你的更改和源代码。</p>
+<p>本书的部分利润将会用于工具自身的开发。</p>
+<h2 id="得到支持"><a href="#得到支持" class="headerlink" title="得到支持"></a>得到支持</h2><p>“人无完人”，对于书中内容，你可能会有一些问题。可以通过下面的方式进行反馈：<br>－通过  <em><a href="https://github.com/survivejs/webpack/issues" target="_blank" rel="external">GitHub Issue Tracker</a></em>联系原作者<br>－关注推特官方账号 <em><a href="https://twitter.com/survivejs" target="_blank" rel="external">@survivejs</a></em>或者直接联系作者<em><a href="https://twitter.com/survivejs" target="_blank" rel="external">@bebraw</a></em><br>－给原作者发邮件<em><a href="http://info@survivejs.com" target="_blank" rel="external">info@survivejs.com</a></em><br>－直接向作者提关于Webpack和React的问题：<em><a href="https://github.com/survivejs/ama/issues" target="_blank" rel="external">SurviveJS AmA</a></em></p>
+<p>在Stack Overflow上提问请用survivejs标记，我将会注意到。推特上，也可用#survivejs。</p>
+<h2 id="信息发布"><a href="#信息发布" class="headerlink" title="信息发布"></a>信息发布</h2><p>我将通过一下频道发布SurviveJs的信息<br>－<em><a href="http://eepurl.com/bth1v5" target="_blank" rel="external">Mailing list</a></em><br>－<em><a href="https://twitter.com/survivejs" target="_blank" rel="external">Twitter</a></em><br>－<em><a href="http://survivejs.com/atom.xml" target="_blank" rel="external">Blog RSS</a></em></p>
+<p>欢迎订阅</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-01文档介绍/" class="archive-article-date">
+  	<time datetime="2016-10-13T06:53:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SurviveJs/">SurviveJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-02使用Webpack开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SurviveJs-Webpack中文翻译文档-02使用Webpack开发
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SurviveJs-Webpack中文翻译文档-01文档介绍" data-title="SurviveJs-Webpack中文翻译文档-01文档介绍" data-url="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-01文档介绍/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>SurviveJs-Webpack中文翻译文档-09压缩代码.md | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Minifying the Build到目前为止，我们还没有思考正式上线时的发布，不用怀疑，这个包将会很大，尤其是当我们引入了React这些库的时候。我们可以使用一些技术来降低打包后的体积。我们也可以控制客户端来对资源进行缓存和懒加载。我们将在理解Webpack模块(Understanding Chunks)这一章节详细讲解。 我们首先学习的就是代码压缩。就是不丢失原意的翻译来简化代码，最终会使代">
+<meta name="keywords" content="学习,SurviveJs,Webpack,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SurviveJs-Webpack中文翻译文档-09压缩代码.md">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-09压缩代码-md/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="Minifying the Build到目前为止，我们还没有思考正式上线时的发布，不用怀疑，这个包将会很大，尤其是当我们引入了React这些库的时候。我们可以使用一些技术来降低打包后的体积。我们也可以控制客户端来对资源进行缓存和懒加载。我们将在理解Webpack模块(Understanding Chunks)这一章节详细讲解。 我们首先学习的就是代码压缩。就是不丢失原意的翻译来简化代码，最终会使代">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SurviveJs-Webpack中文翻译文档-09压缩代码.md">
+<meta name="twitter:description" content="Minifying the Build到目前为止，我们还没有思考正式上线时的发布，不用怀疑，这个包将会很大，尤其是当我们引入了React这些库的时候。我们可以使用一些技术来降低打包后的体积。我们也可以控制客户端来对资源进行缓存和懒加载。我们将在理解Webpack模块(Understanding Chunks)这一章节详细讲解。 我们首先学习的就是代码压缩。就是不丢失原意的翻译来简化代码，最终会使代">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SurviveJs-Webpack中文翻译文档-09压缩代码-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SurviveJs-Webpack中文翻译文档-09压缩代码.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Minifying-the-Build"><a href="#Minifying-the-Build" class="headerlink" title="Minifying the Build"></a>Minifying the Build</h1><p>到目前为止，我们还没有思考正式上线时的发布，不用怀疑，这个包将会很大，尤其是当我们引入了React这些库的时候。我们可以使用一些技术来降低打包后的体积。我们也可以控制客户端来对资源进行缓存和懒加载。我们将在<strong>理解Webpack模块(Understanding Chunks)</strong>这一章节详细讲解。</p>
+<p>我们首先学习的就是代码压缩。就是不丢失原意的翻译来简化代码，最终会使代码变得很混乱，并且难以阅读。但这就是关键。</p>
+<blockquote>
+<p>尽管我们压缩了代码，我们还是可以通过配置<code>devtool</code>选项生成之前讨论的sourcemaps文件，这样将会使我们更好的debug我们的代码。</p>
+</blockquote>
+<h2 id="生成一个基本的构建"><a href="#生成一个基本的构建" class="headerlink" title="生成一个基本的构建"></a>生成一个基本的构建</h2><p>为了能开始，我们要生成一个基本的环境，是我们有东西来压缩。由于我们的项目比较小，没有太多东西可以操作。我们可以引入一个比较大的依赖，如React,这样就可以方便我们后面的操作了。</p>
+<p>安装React:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i reat --save</div></pre></td></tr></table></figure></p>
+<p>在项目中使用：<br><strong>app/index.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">leanpub-start-insert</div><div class="line">require(&apos;react&apos;);</div><div class="line">leanpub-end-insert</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>执行<code>npm run build</code>,我们可以看到以下信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; Webpack@1.0.0 build /Users/bing/Documents/workspase/Webpack/SurvivejsWebpack/webpack04-minifyingTheBuild</div><div class="line">&gt; webpack</div><div class="line"></div><div class="line">Hash: be35c97f613d965955d9</div><div class="line">Version: webpack 1.13.2</div><div class="line">Time: 956ms</div><div class="line">     Asset       Size  Chunks             Chunk Names</div><div class="line">    app.js     155 kB       0  [emitted]  app</div><div class="line">app.js.map     181 kB       0  [emitted]  app</div><div class="line">index.html  180 bytes          [emitted]</div><div class="line">   [0] ./app/index.js 121 bytes &#123;0&#125; [built]</div><div class="line">   [1] ./app/component.js 218 bytes &#123;0&#125; [built]</div><div class="line">    + 37 hidden modules</div><div class="line">Child html-webpack-plugin for &quot;index.html&quot;:</div><div class="line">        + 3 hidden modules</div></pre></td></tr></table></figure></p>
+<p>155kB，太大了！压缩可以减少很大的一部分。</p>
+<h2 id="压缩代码"><a href="#压缩代码" class="headerlink" title="压缩代码"></a>压缩代码</h2><p>压缩（Minification）会是我们的代码在不改变功能的情况下变成体积更小的格式。这使用了通过预定义的转化器对代码进行重写的方式。有时，它会因为重写了部分代码而不经意的破坏代码。</p>
+<p>最简单的代码压缩就是使用<code>webpack -p</code>。<code>-p</code>是<code>--optimize-minimize</code>的缩写，你可以认为它代表“production”。我们也可以直接使用插件（plugin）来更好的进行控制。默认的情况下，Uglify将输出很多警告而且这些警告没有太多价值，我们可以关闭警告。</p>
+<p>首先，我们可以定义一个简单的函数来实现这个功能：<br><strong>libs/parts.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">leanpub-start-insert</div><div class="line">exports.minify = function() &#123;</div><div class="line">  return &#123;</div><div class="line">    plugins: [</div><div class="line">      new webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">        compress: &#123;</div><div class="line">          warnings: false</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">leanpub-end-insert</div></pre></td></tr></table></figure></p>
+<p>并且在主配置文件中引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">// Detect how npm is run and branch based on that</div><div class="line">switch(process.env.npm_lifecycle_event) &#123;</div><div class="line">  case &apos;build&apos;:</div><div class="line">    config = merge(</div><div class="line">      common,</div><div class="line">      &#123;</div><div class="line">        devtool: &apos;source-map&apos;</div><div class="line">      &#125;,</div><div class="line">leanpub-start-insert</div><div class="line">      parts.minify(),</div><div class="line">leanpub-end-insert</div><div class="line">      parts.setupCSS(PATHS.app)</div><div class="line">    );</div><div class="line">    break;</div><div class="line">  default:</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = validate(config);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在执行<code>npm run build</code>,你看到的输出代码提交将较小很多：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; Webpack@1.0.0 build /Users/bing/Documents/workspase/Webpack/SurvivejsWebpack/webpack04-minifyingTheBuild</div><div class="line">&gt; webpack</div><div class="line"></div><div class="line">Hash: 648ef070247f37de3b26</div><div class="line">Version: webpack 1.13.2</div><div class="line">Time: 1719ms</div><div class="line">     Asset       Size  Chunks             Chunk Names</div><div class="line">    app.js    44.8 kB       0  [emitted]  app</div><div class="line">app.js.map     378 kB       0  [emitted]  app</div><div class="line">index.html  180 bytes          [emitted]</div><div class="line">   [0] ./app/index.js 121 bytes &#123;0&#125; [built]</div><div class="line">   [1] ./app/component.js 218 bytes &#123;0&#125; [built]</div><div class="line">    + 37 hidden modules</div><div class="line">Child html-webpack-plugin for &quot;index.html&quot;:</div><div class="line">        + 3 hidden modules</div></pre></td></tr></table></figure></p>
+<p>由于需要对代码进行处理，所以打包时间较长。但最终我们得到了小的多的文件。</p>
+<blockquote>
+<p>Uglify warnings可以帮助我们很好的理解它是如何处理这些这些代码的。所以过段时间看看这些警告信息也有些作用。</p>
+</blockquote>
+<h2 id="通过Webpack来控制UglifyJs"><a href="#通过Webpack来控制UglifyJs" class="headerlink" title="通过Webpack来控制UglifyJs"></a>通过Webpack来控制UglifyJs</h2><p> UglifyJS有一个叫做<strong>mangling</strong>的功能会默认开启。这个功能将会缩短局部函数的变量和名称，通常会使其变为一个字母。通过特殊配置后它也会对属性进行重写。<br> 由于这些转换将会破坏代码，所以需要特别小心。一个很好的例子就是Angular1和它的注入依赖系统。由于其依赖strings,所以你需要特别小心，不要压缩这些东西，以免代码无法运行。</p>
+<p> 除了<strong>mangling</strong>，我们还在Webpack中通过<strong><em><a href="http://lisperator.net/uglifyjs/" target="_blank" rel="external">UglifyJS features</a></em></strong>初始化：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> new webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">  // Don&apos;t beautify output (enable for neater output)</div><div class="line">  beautify: false,</div><div class="line"></div><div class="line">  // Eliminate comments</div><div class="line">  comments: false,</div><div class="line"></div><div class="line">  // Compression specific options</div><div class="line">  compress: &#123;</div><div class="line">    warnings: false,</div><div class="line"></div><div class="line">    // Drop `console` statements</div><div class="line">    drop_console: true</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // Mangling specific options</div><div class="line">  mangle: &#123;</div><div class="line">    // Don&apos;t mangle $</div><div class="line">    except: [&apos;$&apos;],</div><div class="line"></div><div class="line">    // Don&apos;t care about IE8</div><div class="line">    screw_ie8 : true,</div><div class="line"></div><div class="line">    // Don&apos;t mangle function names</div><div class="line">    keep_fnames: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>如果开启meaning功能，最好配置<code>except: [&#39;webpackJsonp&#39;]</code>来防止破坏Webpack的运行。</p>
+<blockquote>
+<p>删除<code>console</code>信息也可以通过babel的插件来实现。这个在后面的章节会详细讲解</p>
+<p>也可以通过<strong><em><a href="https://www.npmjs.com/package/uglify-loader" target="_blank" rel="external">uglify-loader</a></em></strong>来控制压缩操作。</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>尽管我们的项目现在已经被压缩的很小了，但是我们还有更多事情要做。接下来的就是通过配置环境变量使构建时</p>
+<p>React可以优化它自己。这个技术也可以对平时的代码进行处理。你也许希望在生产环境构建时减少一些检查来使项目变得更小。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-09压缩代码-md/" class="archive-article-date">
+  	<time datetime="2016-10-13T08:39:01.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SurviveJs/">SurviveJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-10设置环境变量-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SurviveJs-Webpack中文翻译文档-10设置环境变量.md
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-08用Webpack打包-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SurviveJs-Webpack中文翻译文档-08用Webpack打包.md</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SurviveJs-Webpack中文翻译文档-09压缩代码-md" data-title="SurviveJs-Webpack中文翻译文档-09压缩代码.md" data-url="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-09压缩代码-md/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

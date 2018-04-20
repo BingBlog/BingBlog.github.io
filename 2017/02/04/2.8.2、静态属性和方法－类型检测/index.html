@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>jQuery技术内幕 2.8.2、静态属性和方法－类型检测 | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="$.type()生成class2type:12345var class2type = [];$.each(&amp;quot;Boolean Number String Function Array Date RegExp Object&amp;quot;.split(&amp;quot; &amp;quot;), function(i, name)&amp;#123;    class2type[&amp;quot;[object &amp;quot">
+<meta name="keywords" content="jQuery,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery技术内幕 2.8.2、静态属性和方法－类型检测">
+<meta property="og:url" content="http://yoursite.com/2017/02/04/2.8.2、静态属性和方法－类型检测/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="$.type()生成class2type:12345var class2type = [];$.each(&amp;quot;Boolean Number String Function Array Date RegExp Object&amp;quot;.split(&amp;quot; &amp;quot;), function(i, name)&amp;#123;    class2type[&amp;quot;[object &amp;quot">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery技术内幕 2.8.2、静态属性和方法－类型检测">
+<meta name="twitter:description" content="$.type()生成class2type:12345var class2type = [];$.each(&amp;quot;Boolean Number String Function Array Date RegExp Object&amp;quot;.split(&amp;quot; &amp;quot;), function(i, name)&amp;#123;    class2type[&amp;quot;[object &amp;quot">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2.8.2、静态属性和方法－类型检测" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery技术内幕 2.8.2、静态属性和方法－类型检测
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="type"><a href="#type" class="headerlink" title="$.type()"></a>$.type()</h1><p><strong>生成class2type:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var class2type = [];</div><div class="line">$.each(&quot;Boolean Number String Function Array Date RegExp Object&quot;.split(&quot; &quot;), function(i, name)&#123;</div><div class="line">    class2type[&quot;[object &quot; + name + &quot;]&quot;] = name.toLowerCase();</div><div class="line">&#125;);</div><div class="line">console.log(class2type);</div></pre></td></tr></table></figure></p>
+<p><strong>class2type数组:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line">[</div><div class="line">    [object Array]:&quot;array&quot;</div><div class="line">    [object Boolean]:&quot;boolean&quot;</div><div class="line">    [object Date]:&quot;date&quot;</div><div class="line">    [object Function]:&quot;function&quot;</div><div class="line">    [object Number]:&quot;number&quot;</div><div class="line">    [object Object]:&quot;object&quot;</div><div class="line">    [object RegExp]:&quot;regexp&quot;</div><div class="line">    [object String]:&quot;string&quot;</div><div class="line">]</div><div class="line">**/</div></pre></td></tr></table></figure></p>
+<p><strong>定义类型检测方法:</strong><br>利用<code>Object.prototype.toString.call()</code>,由于该方法在es5之后才能对<code>null</code>、<code>undefined</code>返回正确的值，所以需要额外处理,原因在后面有详细分析。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function type(obj)&#123;</div><div class="line">    /**</div><div class="line">    Since JavaScript ES5</div><div class="line">    Object.prototype.toString.call(undefined);   // [object Undefined]</div><div class="line">    Object.prototype.toString.call(null);        // [object Null]</div><div class="line">    **/</div><div class="line">    return obj == null ? String(obj) : class2type[Object.prototype.toString.call(obj)] || &quot;object&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><p>ES3:<br><code>String(value)</code>在ES3中的定义:</p>
+<blockquote>
+<p>15.5.1 The String Constructor Called as a Function</p>
+<blockquote>
+<p>When String is called as a function rather than as a constructor, it performs a type conversion.<br>当String作为函数而不是作为构造函数调用时，它执行类型转换。</p>
+</blockquote>
+<p>15.5.1.1 String ( [ value ] )</p>
+<blockquote>
+<p>Returns a string value (not a String object) computed by ToString(value). If value is not supplied, the<br>empty string “” is returned.<br>返回由ToString（value）计算的字符串值（而不是String对象）。 如果未提供值，则<br>返回空字符串“”。</p>
+</blockquote>
+</blockquote>
+<p>ES5:</p>
+<blockquote>
+<p>15.5.1 The String Constructor Called as a Function</p>
+<blockquote>
+<p>When String is called as a function rather than as a constructor, it performs a type conversion.<br>当String作为函数而不是作为构造函数调用时，它执行类型转换。</p>
+</blockquote>
+<p>15.5.1.1 String ( [ value ] )</p>
+<blockquote>
+<p>Returns a String value (not a String object) computed by ToString(value). If value is not supplied, the empty String “” is returned.<br>返回由ToString（value）计算的字符串值（而不是String对象）。 如果未提供值，则<br>返回空字符串“”。</p>
+</blockquote>
+</blockquote>
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h2><p>ES3 &amp;&amp; ES5</p>
+<blockquote>
+<p>9.8 ToString</p>
+<blockquote>
+<p>The abstract operation ToString converts its argument to a value of type String according to Table:</p>
+</blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Argument Type</th>
+<th style="text-align:left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:left">“undefined”</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:left">“null”</td>
+</tr>
+<tr>
+<td style="text-align:left">…(仅截取部分)</td>
+</tr>
+</tbody>
+</table>
+<p>以上得知，<code>type()</code>方法中当传入值为<code>undefined</code>或者<code>null</code>时，用<code>String()</code>来处理，而<code>String()</code>方法其实也是按照<code>toString()</code>来处理的,<code>toString()</code>对<code>undefined</code>和<code>null</code>进行了专门的处理。当传入值为其它时，则使用<code>Object.prototype.toString.call()</code>来处理。<br>下面来看下对于<code>Object.prototype.toString</code>的官方定义。<br>ES3</p>
+<blockquote>
+<p>15.2.4.2 Object.prototype.toString ( )</p>
+<blockquote>
+<p>When the toString method is called, the following steps are taken:</p>
+<ol>
+<li>Get the [[Class]] property of this object.</li>
+<li>Compute a string value by concatenating the three strings “[object “, Result(1), and “]”.</li>
+<li>Return Result(2).</li>
+</ol>
+</blockquote>
+</blockquote>
+<h2 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h2><p>ES5</p>
+<blockquote>
+<p>15.2.4.2 Object.prototype.toString ( )</p>
+<blockquote>
+<p>When the toString method is called, the following steps are taken:</p>
+<ol>
+<li>If the this value is undefined, return “[object Undefined]”.</li>
+<li>If the this value is null, return “[object Null]”.</li>
+<li>Let O be the result of calling ToObject passing the this value as the argument.</li>
+<li>Let class be the value of the [[Class]] internal property of O.</li>
+<li>Return the String value that is the result of concatenating the three Strings “[object “, class, and “]”.</li>
+</ol>
+</blockquote>
+</blockquote>
+<p>由以上定义发现,<code>Object.prototype.toString</code>方法被调用时，都会获取当前对象的[[class]]属性,但是<strong>ES5</strong>相比于<strong>ES3</strong>多了对于”undefined”和”null”的定义，这也是<code>type()</code>方法为了兼容低版本浏览器对<code>obj == null</code>的情况进行特殊处理的原因。</p>
+<p><strong>测试:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">console.log(type(null)); //null</div><div class="line">console.log(type(undefined)); //undefined</div><div class="line">console.log(type(&#123;&#125;)); //object</div><div class="line">console.log(type([])); //array</div><div class="line">console.log(type(0)); //number</div><div class="line">console.log(type(/a/)); //regexp</div><div class="line">console.log(type(new Date())); //date</div><div class="line">console.log(type(&apos;&apos;)); string</div></pre></td></tr></table></figure></p>
+<p>API详解<br>The toString() method returns a string representing the object.</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.toString()</div></pre></td></tr></table></figure>
+</li>
+<li><p>Return value<br>A string representing the object.</p>
+</li>
+</ul>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Every object has a toString() method that is automatically called when the object is to be represented as a text value or when an object is referred to in a manner in which a string is expected. By default, the toString() method is inherited by every object descended from Object. If this method is not overridden in a custom object, toString() returns “[object type]”, where type is the object type. The following code illustrates this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var o = new Object();</div><div class="line">o.toString(); // returns [object Object]</div></pre></td></tr></table></figure></p>
+<p><strong>Note: Starting in JavaScript 1.8.5 toString() called on null returns [object Null], and undefined returns [object Undefined], as defined in the 5th Edition of ECMAScript and a subsequent Errata. See Using_toString()_to_detect_object_class.</strong></p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>Overriding the default toString method</p>
+<p>You can create a function to be called in place of the default toString() method. The toString() method takes no arguments and should return a string. The toString() method you create can be any value you want, but it will be most useful if it carries information about the object.</p>
+<p>The following code defines the Dog object type and creates theDog, an object of type Dog:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Dog(name, breed, color, sex) &#123;</div><div class="line">  this.name = name;</div><div class="line">  this.breed = breed;</div><div class="line">  this.color = color;</div><div class="line">  this.sex = sex;</div><div class="line">&#125;</div><div class="line"></div><div class="line">theDog = new Dog(&apos;Gabby&apos;, &apos;Lab&apos;, &apos;chocolate&apos;, &apos;female&apos;);</div></pre></td></tr></table></figure></p>
+<p>If you call the toString() method on this custom object, it returns the default value inherited from Object:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theDog.toString(); // returns [object Object]</div></pre></td></tr></table></figure></p>
+<p>The following code creates and assigns dogToString() to override the default toString() method. This function generates a string containing the name, breed, color, and sex of the object, in the form “property = value;”.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Dog.prototype.toString = function dogToString() &#123;</div><div class="line">  var ret = &apos;Dog &apos; + this.name + &apos; is a &apos; + this.sex + &apos; &apos; + this.color + &apos; &apos; + this.breed;</div><div class="line">  return ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>With the preceding code in place, any time theDog is used in a string context, JavaScript automatically calls the dogToString() function, which returns the following string:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;Dog Gabby is a female chocolate Lab&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="Using-toString-to-detect-object-class"><a href="#Using-toString-to-detect-object-class" class="headerlink" title="Using toString() to detect object class"></a>Using toString() to detect object class</h3><p>toString() can be used with every object and allows you to get its class. To use the Object.prototype.toString() with every object, you need to call Function.prototype.call() or Function.prototype.apply() on it, passing the object you want to inspect as the first parameter called thisArg.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var toString = Object.prototype.toString;</div><div class="line"></div><div class="line">toString.call(new Date);    // [object Date]</div><div class="line">toString.call(new String);  // [object String]</div><div class="line">toString.call(Math);        // [object Math]</div><div class="line"></div><div class="line">// Since JavaScript 1.8.5</div><div class="line">toString.call(undefined);   // [object Undefined]</div><div class="line">toString.call(null);        // [object Null]</div></pre></td></tr></table></figure></p>
+<h2 id="Boolean-prototype-toString"><a href="#Boolean-prototype-toString" class="headerlink" title="Boolean.prototype.toString()"></a>Boolean.prototype.toString()</h2><p>The toString() method returns a string representing the specified Boolean object.</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bool.toString()</div></pre></td></tr></table></figure>
+</li>
+<li><p>Return value</p>
+</li>
+</ul>
+<p>A string representing the specified Boolean object.</p>
+<h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>The Boolean object overrides the toString method of the Object object; it does not inherit Object.prototype.toString(). For Boolean objects, the toString method returns a string representation of the object.</p>
+<p>JavaScript calls the toString method automatically when a Boolean is to be represented as a text value or when a Boolean is referred to in a string concatenation.</p>
+<p>For Boolean objects and values, the built-in toString method returns the string “true” or “false” depending on the value of the boolean object.</p>
+<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples</h3><p>Using toString<br>In the following code, flag.toString() returns “true”:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var flag = new Boolean(true);</div><div class="line">var myVar = flag.toString();</div></pre></td></tr></table></figure></p>
+<h2 id="String-prototype-toString"><a href="#String-prototype-toString" class="headerlink" title="String.prototype.toString()"></a>String.prototype.toString()</h2><p>The toString() method returns a string representing the specified object.</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str.toString()</div></pre></td></tr></table></figure>
+</li>
+<li><p>Return value<br> A string representing the calling object.</p>
+<h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><p><strong>The String object overrides the toString() method of the Object object; it does not inherit Object.prototype.toString().</strong> For String objects, the toString() method returns a string representation of the object and is the same as the String.prototype.valueOf() method.</p>
+</li>
+</ul>
+<h3 id="Examples-2"><a href="#Examples-2" class="headerlink" title="Examples"></a>Examples</h3><p>Using toString()</p>
+<p>The following example displays the string value of a String object:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var x = new String(&apos;Hello world&apos;);</div><div class="line">console.log(x.toString()); // logs &apos;Hello world&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Error-prototype-toString"><a href="#Error-prototype-toString" class="headerlink" title="Error.prototype.toString()"></a>Error.prototype.toString()</h2><p>The toString() method returns a string representing the specified Error object.</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e.toString()</div></pre></td></tr></table></figure>
+</li>
+<li><p>Return value<br>A string representing the specified Error object.</p>
+</li>
+</ul>
+<h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><p>The Error object overrides the Object.prototype.toString() method inherited by all objects. Its semantics are as follows (assuming Object and String have their original values):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Error.prototype.toString = function() &#123;</div><div class="line">  &apos;use strict&apos;;</div><div class="line"></div><div class="line">  var obj = Object(this);</div><div class="line">  if (obj !== this) &#123;</div><div class="line">    throw new TypeError();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  var name = this.name;</div><div class="line">  name = (name === undefined) ? &apos;Error&apos; : String(name);</div><div class="line"></div><div class="line">  var msg = this.message;</div><div class="line">  msg = (msg === undefined) ? &apos;&apos; : String(msg);</div><div class="line"></div><div class="line">  if (name === &apos;&apos;) &#123;</div><div class="line">    return msg;</div><div class="line">  &#125;</div><div class="line">  if (msg === &apos;&apos;) &#123;</div><div class="line">    return name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return name + &apos;: &apos; + msg;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="Examples-3"><a href="#Examples-3" class="headerlink" title="Examples"></a>Examples</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var e = new Error(&apos;fatal error&apos;);</div><div class="line">console.log(e.toString()); // &apos;Error: fatal error&apos;</div><div class="line"></div><div class="line">e.name = undefined;</div><div class="line">console.log(e.toString()); // &apos;Error: fatal error&apos;</div><div class="line"></div><div class="line">e.name = &apos;&apos;;</div><div class="line">console.log(e.toString()); // &apos;fatal error&apos;</div><div class="line"></div><div class="line">e.message = undefined;</div><div class="line">console.log(e.toString()); // &apos;Error&apos;</div><div class="line"></div><div class="line">e.name = &apos;hello&apos;;</div><div class="line">console.log(e.toString()); // &apos;hello&apos;</div></pre></td></tr></table></figure>
+<h2 id="Number-prototype-toString"><a href="#Number-prototype-toString" class="headerlink" title="Number.prototype.toString()"></a>Number.prototype.toString()</h2><p>toString（）方法返回一个表示指定Number对象的字符串。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">numObj.toString([radix])</div></pre></td></tr></table></figure>
+<ul>
+<li>参数<br> <strong>radix:</strong> 可选的。 介于2和36之间的整数，指定用于表示数值的基数</li>
+<li>返回值<br> 表示指定Number对象的字符串。</li>
+<li>例外<br> <strong>RangeError:</strong> 如果toString（）的基数不在2和36之间，则抛出RangeError。</li>
+</ul>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Number对象覆盖Object对象的toString（）方法; 它不继承Object.prototype.toString（）。对于Number对象，toString（）方法返回指定基数中对象的字符串表示形式。</p>
+<p>toString（）方法解析其第一个参数，并尝试返回指定基数（基数）中的字符串表示形式。对于大于10的基数，字母表示大于9的数字。例如，对于十六进制数（基数16），使用a至f。</p>
+<p>如果没有指定基数，则优选的基数假定为10。</p>
+<p>如果numObj为负，则符号被保留。 即使基数是2，情况也是如此; 返回的字符串是前面带有 -符号的numObj的正二进制表示，而不是numObj的二进制补码。</p>
+<p>如果numObj不是整数，“.”符号用于分隔小数位。</p>
+<h2 id="Function-prototype-toString"><a href="#Function-prototype-toString" class="headerlink" title="Function.prototype.toString()"></a>Function.prototype.toString()</h2><p>The toString() method returns a string representing the source code of the function.</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function.toString()</div></pre></td></tr></table></figure>
+</li>
+<li><p>Return value<br> A string representing the source code of the function.</p>
+</li>
+</ul>
+<h3 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h3><p>The Function object overrides the toString method inherited from Object; it does not inherit Object.prototype.toString. For Function objects, the toString method returns a string representation of the object in the form of a function declaration. That is, toString decompiles the function, and the string returned includes the function keyword, the argument list, curly braces, and the source of the function body.</p>
+<p>JavaScript calls the toString method automatically when a Function is to be represented as a text value, e.g. when a function is concatenated with a string.</p>
+<p>The toString() method will throw a TypeError exception (“Function.prototype.toString called on incompatible object”), if its this value object is not a Function object. It will also throw for Proxy objects, for example.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Function.prototype.toString.call(&apos;foo&apos;); // TypeError</div><div class="line"></div><div class="line">var proxy = new Proxy(function() &#123;&#125;, &#123;&#125;);</div><div class="line">Function.prototype.toString.call(proxy); // TypeError</div></pre></td></tr></table></figure></p>
+<h2 id="Array-prototype-toString"><a href="#Array-prototype-toString" class="headerlink" title="Array.prototype.toString()"></a>Array.prototype.toString()</h2><p>The toString() method returns a string representing the specified array and its elements.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var months = [&apos;Jan&apos;, &apos;Feb&apos;, &apos;Mar&apos;, &apos;Apr&apos;];</div><div class="line">months.toString(); // &quot;Jan,Feb,Mar,Apr&quot;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arr.toString()</div></pre></td></tr></table></figure>
+</li>
+<li><p>Return value</p>
+</li>
+</ul>
+<p>A string representing the elements of the array.</p>
+<h3 id="Description-5"><a href="#Description-5" class="headerlink" title="Description"></a>Description</h3><p><strong>The Array object overrides the toString method of Object.</strong> For Array objects, the toString method joins the array and returns one string containing each array element separated by commas.</p>
+<p>JavaScript calls the toString method automatically when an array is to be represented as a text value or when an array is referred to in a string concatenation.</p>
+<p><strong>ECMAScript 5 semantics</strong><br>Starting in JavaScript 1.8.5 (Firefox 4), and consistent with ECMAScript 5th edition semantics, the toString() method is generic and can be used with any object. Object.prototype.toString() will be called, and the resulting value will be returned.</p>
+<h1 id="isNumeric"><a href="#isNumeric" class="headerlink" title="$.isNumeric"></a>$.isNumeric</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isNumeric( obj )&#123;</div><div class="line">    return !isNaN( parseFloat(obj) ) &amp;&amp; isFinite( obj );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="isEmptyObject"><a href="#isEmptyObject" class="headerlink" title="$.isEmptyObject"></a>$.isEmptyObject</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function isEmptyObject(obj)&#123;</div><div class="line">    if(var name in obj)&#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果对象没有可枚举属性，则认为其为空对象。 js中基本包装类型的原型属性是不可枚举的，如<code>Object, Array, Number</code>等。<br>利用<code>defineProperty</code>定义的属性，并设置该属性不可枚举。<code>for in</code>无法遍历改属性。如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(Object, &quot;sex&quot;, &#123;</div><div class="line">    value: &quot;female&quot;,</div><div class="line">    enumerable: false</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/04/2.8.2、静态属性和方法－类型检测/" class="archive-article-date">
+  	<time datetime="2017-02-04T14:41:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/06/14/Sizzle深入理解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Sizzle深入理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/04/CSS常用布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS常用的经典布局</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2.8.2、静态属性和方法－类型检测" data-title="jQuery技术内幕 2.8.2、静态属性和方法－类型检测" data-url="http://yoursite.com/2017/02/04/2.8.2、静态属性和方法－类型检测/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

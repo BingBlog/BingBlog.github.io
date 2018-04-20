@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>圣杯布局详解（翻译）、双飞翼布局详解 | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="圣杯布局详解 在前端一直写javascript，后来因为自己的小项目，要自己进行页面布局了，为了能够自适应，顺便探讨一下经典的css布局，根据大家的推荐，就找到了经典的圣杯布局和双飞翼布局。本文关于圣杯布局的部分都是翻译过来的，其中部分内容经过自己的理解稍加补充，最后的双飞翼布局部分是自己整理的。原文：by Matthew Levine January 30, 2006原文地址：http://al">
+<meta name="keywords" content="学习,css,布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="圣杯布局详解（翻译）、双飞翼布局详解">
+<meta property="og:url" content="http://yoursite.com/2017/02/04/圣杯布局详解（翻译）/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="圣杯布局详解 在前端一直写javascript，后来因为自己的小项目，要自己进行页面布局了，为了能够自适应，顺便探讨一下经典的css布局，根据大家的推荐，就找到了经典的圣杯布局和双飞翼布局。本文关于圣杯布局的部分都是翻译过来的，其中部分内容经过自己的理解稍加补充，最后的双飞翼布局部分是自己整理的。原文：by Matthew Levine January 30, 2006原文地址：http://al">
+<meta property="og:image" content="http://yoursite.com/css001.gif">
+<meta property="og:image" content="http://yoursite.com/css002.gif">
+<meta property="og:image" content="http://yoursite.com/css003.gif">
+<meta property="og:image" content="http://yoursite.com/css004.gif">
+<meta property="og:image" content="http://yoursite.com/css005.gif">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="圣杯布局详解（翻译）、双飞翼布局详解">
+<meta name="twitter:description" content="圣杯布局详解 在前端一直写javascript，后来因为自己的小项目，要自己进行页面布局了，为了能够自适应，顺便探讨一下经典的css布局，根据大家的推荐，就找到了经典的圣杯布局和双飞翼布局。本文关于圣杯布局的部分都是翻译过来的，其中部分内容经过自己的理解稍加补充，最后的双飞翼布局部分是自己整理的。原文：by Matthew Levine January 30, 2006原文地址：http://al">
+<meta name="twitter:image" content="http://yoursite.com/css001.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-圣杯布局详解（翻译）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      圣杯布局详解（翻译）、双飞翼布局详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="圣杯布局详解"><a href="#圣杯布局详解" class="headerlink" title="圣杯布局详解"></a>圣杯布局详解</h1><blockquote>
+<p>在前端一直写javascript，后来因为自己的小项目，要自己进行页面布局了，为了能够自适应，顺便探讨一下经典的css布局，根据大家的推荐，就找到了经典的<strong><em>圣杯布局</em></strong>和<strong><em>双飞翼布局</em></strong>。本文关于圣杯布局的部分都是翻译过来的，其中部分内容经过自己的理解稍加补充，最后的双飞翼布局部分是自己整理的。<br>原文：<br>by <strong><a href="http://alistapart.com/author/matthewlevine" target="_blank" rel="external">Matthew Levine</a></strong> January 30, 2006<br>原文地址：<a href="http://alistapart.com/article/holygrail" target="_blank" rel="external">http://alistapart.com/article/holygrail</a><br><br><br><strong>真的不是我命名的，这让我感到非常抱歉，我并不想用这个名字来强调其重要性，或者为了贬低那个宗教中的具有特殊含义的“圣杯”。</strong><br><br><br>但是这个称呼已经在这里了，而且我们都知道它指的是什么。<br><br><br>我们常常需要三列来布局一个网页。固定宽度的一列用来展示导航，另外一列，同样也是固定宽度的，用来投放Google广告或者照片，同时能够自适应宽度的中间列来展示主要内容。这博客的黄金时代，该布局的广泛使用和其不好理解的原理，为其赢的了“圣杯布局”的名称！<br><br><br>已经有很多文章探讨了这个话题，也有一些好的模版早已出现了。然而，所有已经存在的方案都会涉及到一些牺牲：</p>
+<ol>
+<li><a href="http://www.manisheriar.com/holygrail/index.htm" target="_blank" rel="external">正确的原代码加载顺序</a></li>
+<li><a href="http://glish.com/css/7.asp" target="_blank" rel="external">100%宽度的底部</a></li>
+<li>精益标记经常会在追求这种难以琢磨的布局中被妥协</li>
+</ol>
+<p>关于上面的几个准则，第一点，在浏览器对dom结构进行解析时，可以通过设置，使浏览器不用完全下载整个dom结构就可以先展示部分内容，而对于博客来说，我们通常希望用户可以最先看到中间的内容 </p>
+</blockquote>
+<p><br><br>最近的一个项目使我个人希望的圣杯布局得以实现。我将想你介绍的技术，不仅能够让你实现圣杯布局，还不回影响代码的灵活性，它包涵一下特性：</p>
+<ol>
+<li>拥有一个自适应宽度的中间列，两个固定宽度的列位于左右</li>
+<li>让中间列在源代码中首先展示</li>
+<li>允许任意列拥有最大高度</li>
+<li>只需要一个额外的 div 标记，并且</li>
+<li>拥有最简单的css代码和最小的css兼容性代码</li>
+</ol>
+<h2 id="站在巨人肩上"><a href="#站在巨人肩上" class="headerlink" title="站在巨人肩上"></a>站在巨人肩上</h2><p>在这里展示的技术受到了Alex Robinson撰写的<em>One True Layout</em>这篇文章的启发。 Alex在他的文章中已经标明了圣杯方法的问题，但是他的处理方式需要两个wrappers并且在没有没有额外的divs时，padding会变得很困难。<br><br><br>另一个指引来自Eric Meyer的改进，它使用定位来混合多个单元类型。他的例子也产生了具有固定侧边栏和自适应中间列的三栏布局。不幸的是，它依赖于近似百分比的方式填充视口的一部分，其随着不同的屏幕分辨率而变化。</p>
+<h2 id="接下来，我们看代码"><a href="#接下来，我们看代码" class="headerlink" title="接下来，我们看代码"></a>接下来，我们看代码</h2><p>所需要的html结构和元素。<br>（为了更好的描述这个技术，我们特意使用了非语意的id,如”center”,”left”,”right”。在实际项目中，我们建议你使用语义化的ids。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div id=&quot;container&quot;&gt;</div><div class="line">  &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>这就足够了。一个单独、额外的div用来包裹你所需要的所有列；这甚至满足了我强迫症似的标记习惯。<br><br><br>样式表也很简单。假设你需要一个固定宽度为200px的左边栏，一个固定宽度为150px的右边栏。为了简化描述，我将左边，右边，中间分别缩写为LC,RC,CC。基本的CSS样式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  min-width: 550px;      /* 2x LC width + RC width */</div><div class="line">&#125;</div><div class="line">#container &#123;</div><div class="line">  padding-left: 200px;   /* LC width */</div><div class="line">  padding-right: 150px;  /* RC width */</div><div class="line">&#125;</div><div class="line">#container .column &#123;</div><div class="line">  position: relative;</div><div class="line">  float: left;</div><div class="line">&#125;</div><div class="line">#center &#123;</div><div class="line">  width: 100%;</div><div class="line">&#125;</div><div class="line">#left &#123;</div><div class="line">  width: 200px;          /* LC width */</div><div class="line">  right: 200px;          /* LC width */</div><div class="line">  margin-left: -100%;</div><div class="line">&#125;</div><div class="line">#right &#123;</div><div class="line">  width: 150px;          /* RC width */</div><div class="line">  margin-right: -150px;  /* RC width */</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">  clear: both;</div><div class="line">&#125;</div><div class="line">/*** IE6 Fix ***/</div><div class="line">* html #left &#123;</div><div class="line">  left: 150px;           /* RC width */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单的将这些值替换为你自己的尺寸，就成了你自己的圣杯布局。这个技术在所有现代浏览器中都有效，包括Safari, Opera, Firefox, 和(需要最后一行CSShack) IE6.IE5.5支持需要至少一个盒子模型hack，这是一个练习留给读者。</p>
+<blockquote>
+<p>根据现在【2017年】的浏览器市场，可以不用考虑IE6的情况了。</p>
+</blockquote>
+<p>现在，可以详细理解并欣赏这种布局的优雅。</p>
+<h2 id="原理详解"><a href="#原理详解" class="headerlink" title="原理详解"></a>原理详解</h2><p>该方法很简单。container div拥有一个自适应的中间列和固定宽度的左右内边距。诀窍就是让左侧的div占据<strong>左侧的内边距</strong>的位置，右侧div占据<strong>右侧内边距</strong>的位置，使中间列可以自适应container的宽度。<br>现在，我们来一步一步的实现。</p>
+<p>第一步，创建页面框架<br>创建头部，底部和container容器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>根据我们所需要的左右栏宽度为container容器设置左右内边距。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#container &#123;</div><div class="line">  padding-left: 200px;   /* LC width */</div><div class="line">  padding-right: 150px;  /* RC width */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在，我们的布局如下图：<br><img src="/css001.gif" alt=""></p>
+<div align="center">Step 1: Create the frame</div>
+
+<p>第二步，增加列<br>我们已经有了基本的架构，现在将关注列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;&lt;div id=&quot;container&quot;&gt;</div><div class="line">  &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>接下来，我们增加合适的宽度，并且将他们放到同一行。<strong>并设置中、左、右三栏都向左浮动</strong>。我们还需要清除footer的浮动。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#container .column &#123;</div><div class="line">  float: left;</div><div class="line">&#125;</div><div class="line">#center &#123;</div><div class="line">  width: 100%;</div><div class="line">&#125;</div><div class="line">#left &#123;</div><div class="line">  width: 200px;  /* LC width */</div><div class="line">&#125;</div><div class="line">#right &#123;</div><div class="line">  width: 150px;  /* RC width */</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">  clear: both;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意中间列的100%宽度指的是容器container的宽度，并且不包括容器的左右内边距。稍候我们将再次看到100%的宽度，它仍然指的是容器container代表的中间列宽度。<br>现在需要使列整齐排列在一行，但是因为中间列占据了100%的可用宽度，所以左右列都排列到了下一行。如图：</p>
+<blockquote>
+<p>关于宽度100%，因为container设置了左右内边距，而在标准的dom盒模型中，宽度不包含内边距。</p>
+</blockquote>
+<p><img src="/css002.gif" alt=""></p>
+<div align="center">Step 2: Add the columns</div>
+
+<p>第三步、将左边栏放到合适的位置<br>所剩下的就是使左、右两列分别位于容器container的左、右内边距中，从而使所有的列位于同一行。中间列的位置现在已经如我们期望的那样，所以我们仅需要关注左边栏和右边栏。</p>
+<p>将左边栏放到合适的位置需要两步。首先，我们将对其设置-100%宽度的左外边距。<strong>记住，这个100%指的是中间列的宽度，也就是去掉左右内边距后容器container的宽度。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#left &#123;</div><div class="line">  width: 200px;        /* LC width */</div><div class="line">  margin-left: -100%;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在左边栏位于中间列的左侧，并且遮挡了中间列的左侧。右边栏浮动到了第二行的左边。如下图：</p>
+<blockquote>
+<p>因为我们对三列都设置了向左的浮动，当对左边栏再设置 margin-left: -100%时，我们实际上是将其左边框的位置向左移动了整个中间列的宽度。</p>
+</blockquote>
+<p><img src="/css003.gif" alt=""></p>
+<div align="center">Step 3: Pull the left column into place—halfway there</div><br>为了将左边栏放到容器左内边距中，我们将使用相对定位，使左边栏向左偏移自身列宽。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#container .columns &#123;</div><div class="line">  float: left;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">#left &#123;</div><div class="line">  width: 200px;        /* LC width */</div><div class="line">  margin-left: -100%;  </div><div class="line">  left: -200px;        /* LC width */</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br><code>left:-200px;</code>的设定，可以将左边栏移动到容器的左边。现在左边栏已经完美展现了。<br><img src="/css004.gif" alt=""><br><div align="center"> Step 3: Left column pulled into place</div>
+
+<p>第四步、将右边栏放到合适的位置<br>现在，唯一未解决的问题就是要将右边栏放到合适的位置。为了实现这个，我们仅需要将其放到container的右内边距中。我们将再次使用margin负值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#right &#123;</div><div class="line">  width: 150px;          /* RC width */</div><div class="line">  margin-right: -150px;  /* RC width */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在所有的都被完成了，我们发现包裹的左右两侧的内边距也消失了。</p>
+<p><img src="/css005.gif" alt=""></p>
+<p>第五步、涉及防御<br>如果浏览器的窗口大小改变，中间列的宽度也会随之改变。当中间列比左边列宽还小时，布局就混乱了。在body上设置一个 min-width 可以使布局不回混乱。因为IE6不回出现改问题，所以即使它不支持min-width也不是一个问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  min-width: 550px;  /* 2x LC width + RC width */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然，没有任何布局技术在IE中不是用使用特定方法就能够变得完美。在IE6中margin负值将左边栏拉的太远了。关于IE兼容行问题，稍候在详细分析。我们此处为了将左边栏拉回到合理的位置，给他添加了一个hack。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* html #left &#123;</div><div class="line">  left: 150px;  /* RC width */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关于IE中 为什么使用右边栏的宽度来进行hack,涉及到一点儿代数。我就不用详细的细节来扰乱你了；你可以自己来解决这个问题，或者将其认为是IE的另一个特性。</p>
+<p>##请使用内边距<br>我不是一个设计师，但是看看上面的代码,严重影响到了我们的审美感。连接到一起的列很难看而且使内容难以阅读。所以，我们需要间隙。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#left &#123;</div><div class="line">  width: 180px;        /* LC fullwidth - padding */</div><div class="line">  padding: 0 10px;</div><div class="line">  right: 200px;        /* LC fullwidth */</div><div class="line">  margin-left: -100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>给中间列添加内边距需要一些技巧，但是不需要更多标签，仅仅需要添加一些样式。</p>
+<p>填充加上100％的宽度导致中心列扩展超过容器的非填充宽度。为了将其调回到原位，我们需要增加右边距填充的总量。 这确保中心列只有我们预期的那么大。<br>为了做到这一点，我将修改这个例子，为每一侧列添加一个10像素的填充（共20个像素），在中心的每一边添加一个20像素的填充（总共40像素 ）。 新的CSS看起来像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  min-width: 630px;      /* 2x (LC fullwidth +</div><div class="line">                            CC padding) + RC fullwidth */</div><div class="line">&#125;</div><div class="line">#container &#123;</div><div class="line">  padding-left: 200px;   /* LC fullwidth */</div><div class="line">  padding-right: 190px;  /* RC fullwidth + CC padding */</div><div class="line">&#125;</div><div class="line">#container .column &#123;</div><div class="line">  position: relative;</div><div class="line">  float: left;</div><div class="line">&#125;</div><div class="line">#center &#123;</div><div class="line">  padding: 10px 20px;    /* CC padding */</div><div class="line">  width: 100%;</div><div class="line">&#125;</div><div class="line">#left &#123;</div><div class="line">  width: 180px;          /* LC width */</div><div class="line">  padding: 0 10px;       /* LC padding */</div><div class="line">  right: 240px;          /* LC fullwidth + CC padding */</div><div class="line">  margin-left: -100%;</div><div class="line">&#125;</div><div class="line">#right &#123;</div><div class="line">  width: 130px;          /* RC width */</div><div class="line">  padding: 0 10px;       /* RC padding */</div><div class="line">  margin-right: -190px;  /* RC fullwidth + CC padding */</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">  clear: both;</div><div class="line">&#125;/*** IE Fix ***/</div><div class="line">* html #left &#123;</div><div class="line">  left: 150px;           /* RC fullwidth */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="使三列等高"><a href="#使三列等高" class="headerlink" title="使三列等高"></a>使三列等高</h2><p>只要再使三列等高，这个技术就完美了。我使用的是<em><a href="http://www.positioniseverything.net/articles/onetruelayout/equalheight" target="_blank" rel="external">One True Layout</a></em>里面讲到的技术，这里就不详细介绍了。为了实现这个，你仅需要添加下面的CSS:</p>
+<blockquote>
+<p>使三列等高主要是处理三栏的背景，通常如果一栏的内容很高，其外的两栏因高度不够，会出现背景不足的情况。使用巨大数值的padding-bottom值，然后再使用负的margin-bottom值抵消设置的padding-bottom值。这里使用了内边距有背景，而外边距没有背景的特性。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#container &#123;</div><div class="line">  overflow: hidden;</div><div class="line">&#125;</div><div class="line">#container .column &#123;</div><div class="line">  padding-bottom: 20010px;  /* X + padding-bottom */</div><div class="line">  margin-bottom: -20000px;  /* X */</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">  position: relative;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里，我给所有的列增加了一个额外的10px的底部内边距。<br>需要注意的是，Opera 8在使用overflow时有一个bug:（目前该版本浏览器已经很少见了）</p>
+<p>此布局独有的另一个问题是IE不会在容器底部剪切列背景。如果页面不像视口一样高，它们会溢出页脚。 如果你没有底部，或者你的页面足够高，以确保你总是占据整个视口，这也就不是一个问题。</p>
+<p>但是如果你需要一个单独的底部，也不用担心，你可以使用下面的方法来处理。将底部包裹起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;footer-wrapper&quot;&gt;</div><div class="line">  &lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>现在使用和等高列同样的技巧将底部增加到页面中，接下来你就可以根据自己的需要来设置底部了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* html body &#123;</div><div class="line">  overflow: hidden;</div><div class="line">&#125;</div><div class="line">* html #footer-wrapper &#123;</div><div class="line">  float: left;</div><div class="line">  position: relative;</div><div class="line">  width: 100%;</div><div class="line">  padding-bottom: 10010px;</div><div class="line">  margin-bottom: -10000px;</div><div class="line">  background: #fff;         /* Same as body </div><div class="line">                               background */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>PS:此处我在ie11下模拟了ie7发现布局也出现的问题。如果在实际项目中要处理ie6的兼容性，我建议去看下原文。此处我仅给出最终的兼容ie7、ie+的代码，另外文章中所提到的opara8的问题，我也没有找到对应版本的浏览器，我在最新的opara浏览器中进行了验证（国内该浏览器的早起版本很少）。<br>一下的圣杯布局特性除了文章前面讲到的那些外，还能够保持各个列的高度一致。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;</div><div class="line">        &lt;title&gt;CSS布局&lt;/title&gt;</div><div class="line">        &lt;style&gt;</div><div class="line">            *&#123;</div><div class="line">                margin: 0;</div><div class="line">                padding: 0;</div><div class="line">            &#125;</div><div class="line">           body &#123;</div><div class="line">            min-width: 550px;</div><div class="line">            &#125;</div><div class="line">            #container &#123;</div><div class="line">            padding-left: 200px;   /* LC width */</div><div class="line">            padding-right: 150px;  /* RC width */</div><div class="line">            &#125;</div><div class="line">            #container &#123;</div><div class="line">            overflow: hidden;</div><div class="line">            &#125;</div><div class="line">            #container .column &#123;</div><div class="line">            padding-bottom: 510px;</div><div class="line">            margin-bottom: -500px;</div><div class="line">            &#125;</div><div class="line">            #header&#123;</div><div class="line">                background: greenyellow;</div><div class="line">            &#125;</div><div class="line">            #footer &#123;</div><div class="line">            position: relative;</div><div class="line">            background: greenyellow;</div><div class="line">&#125;</div><div class="line">            #container .column &#123;</div><div class="line">            position: relative;</div><div class="line">            float: left;</div><div class="line">            min-height: 130px;</div><div class="line">            &#125;</div><div class="line">            #center &#123;</div><div class="line">            width: 100%;</div><div class="line">            background: blue;</div><div class="line">            &#125;</div><div class="line">            #left &#123;</div><div class="line">                width: 200px;          /* LC width */</div><div class="line">                left: -200px;          /* LC width */</div><div class="line">                margin-left: -100%;</div><div class="line">                background: red;</div><div class="line">                *left: 150px;</div><div class="line">            &#125;</div><div class="line">            #right &#123;</div><div class="line">                width: 150px;          /* RC width */</div><div class="line">                margin-right: -150px;  /* RC width */</div><div class="line">                background: red;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            #footer-wrapper&#123;</div><div class="line">                float: left;</div><div class="line">                position:relative;</div><div class="line">                width:100%;</div><div class="line">                padding-bottom: 510px;</div><div class="line">                margin-bottom: -500px;</div><div class="line">                background: #fff;</div><div class="line">            &#125;</div><div class="line">        &lt;/style&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;div id=&quot;header&quot;&gt;header&lt;/div&gt;</div><div class="line">        &lt;div id=&quot;container&quot;&gt;</div><div class="line">            &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏左边栏&lt;/div&gt;</div><div class="line">            &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div id=&quot;footer-wrapper&quot;&gt;</div><div class="line">            &lt;div id=&quot;footer&quot;&gt;</div><div class="line">                footer</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;div&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="淘宝双飞翼布局"><a href="#淘宝双飞翼布局" class="headerlink" title="淘宝双飞翼布局"></a>淘宝双飞翼布局</h3><p>圣杯布局引入中国后，被淘宝大神玉伯改进出了双飞翼布局.<br>相比于圣杯布局，双飞翼布局要更容易理解，而且没有使用到相对定位等特性，在国内收到很大欢迎。<br>在具体实现上，整体思路和圣杯布局一样，使用的dom结构的唯一差别就是中间列用一个div包裹起来。在中间列内部通过设置左右外边距来预留出两侧边栏的位置，所以称之为“双飞翼”，再使用外边距负值法将左右边栏放置到预留出的位置。因为在处理过程中，没有使用相对定位，理解起来也更容易。最终代码看起来很清晰简洁。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">        &lt;title&gt;淘宝双飞翼布局&lt;/title&gt;</div><div class="line">        &lt;style&gt;</div><div class="line">            .container&#123;</div><div class="line">                width:100%;</div><div class="line">                margin:10 auto;</div><div class="line">            &#125;</div><div class="line">            .container .col-main&#123;</div><div class="line">                float: left;</div><div class="line">                width:100%;</div><div class="line">            &#125;</div><div class="line">            .container .col-main .main-wrap&#123;</div><div class="line">                margin-left:200px;</div><div class="line">                margin-right:140px;</div><div class="line">                background: lawngreen;</div><div class="line">                min-height:130px;</div><div class="line">            &#125;</div><div class="line">            .container .col-sub&#123;</div><div class="line">                width:200px;</div><div class="line">                float:left;</div><div class="line">                margin-left:-100%;</div><div class="line">                background: #ff0;</div><div class="line">                min-height:130px;</div><div class="line">            &#125;</div><div class="line">            .container .col-extra&#123;</div><div class="line">                width:140px;</div><div class="line">                float:left;</div><div class="line">                margin-left:-140px;</div><div class="line">                background: #ff0;</div><div class="line">                min-height:130px;</div><div class="line">            &#125;</div><div class="line">        &lt;/style&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;div class=&quot;container&quot;&gt;</div><div class="line">            &lt;div class=&quot;col-main&quot;&gt;</div><div class="line">                &lt;div class=&quot;main-wrap&quot;&gt;</div><div class="line">                    我是主元素</div><div class="line">                &lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;col-sub&quot;&gt;我是左边&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;col-extra&quot;&gt;我是右边&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/04/圣杯布局详解（翻译）/" class="archive-article-date">
+  	<time datetime="2017-02-04T14:41:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/02/04/CSS常用布局/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CSS常用的经典布局
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/09/JavaScript对象深度遍历实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript对象深度遍历实践</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="圣杯布局详解（翻译）" data-title="圣杯布局详解（翻译）、双飞翼布局详解" data-url="http://yoursite.com/2017/02/04/圣杯布局详解（翻译）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

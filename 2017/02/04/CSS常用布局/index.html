@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>CSS常用的经典布局 | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS常用的经典布局CSS常用的经典布局包括:  水平、垂直、水平垂直居中 一列定宽一列自适应布局 两列定宽一列自适应布局 两侧定宽中间自适应三列布局  水平、垂直、水平垂直居中水平居中水平居中这个问题首先要搞清楚存在两个条件才能够称之为水平居中，即父元素必须是块级盒子容器，父元素宽度必须已经被设定好，在这两个前提下我们来看水平居中问题。 场景1：子元素是块级元素且宽度没有设定在这种情况下，实际上">
+<meta name="keywords" content="学习,css,布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS常用的经典布局">
+<meta property="og:url" content="http://yoursite.com/2017/02/04/CSS常用布局/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="CSS常用的经典布局CSS常用的经典布局包括:  水平、垂直、水平垂直居中 一列定宽一列自适应布局 两列定宽一列自适应布局 两侧定宽中间自适应三列布局  水平、垂直、水平垂直居中水平居中水平居中这个问题首先要搞清楚存在两个条件才能够称之为水平居中，即父元素必须是块级盒子容器，父元素宽度必须已经被设定好，在这两个前提下我们来看水平居中问题。 场景1：子元素是块级元素且宽度没有设定在这种情况下，实际上">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS常用的经典布局">
+<meta name="twitter:description" content="CSS常用的经典布局CSS常用的经典布局包括:  水平、垂直、水平垂直居中 一列定宽一列自适应布局 两列定宽一列自适应布局 两侧定宽中间自适应三列布局  水平、垂直、水平垂直居中水平居中水平居中这个问题首先要搞清楚存在两个条件才能够称之为水平居中，即父元素必须是块级盒子容器，父元素宽度必须已经被设定好，在这两个前提下我们来看水平居中问题。 场景1：子元素是块级元素且宽度没有设定在这种情况下，实际上">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-CSS常用布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS常用的经典布局
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS常用的经典布局"><a href="#CSS常用的经典布局" class="headerlink" title="CSS常用的经典布局"></a>CSS常用的经典布局</h1><p>CSS常用的经典布局包括:</p>
+<ol>
+<li>水平、垂直、水平垂直居中</li>
+<li>一列定宽一列自适应布局</li>
+<li>两列定宽一列自适应布局</li>
+<li>两侧定宽中间自适应三列布局</li>
+</ol>
+<h2 id="水平、垂直、水平垂直居中"><a href="#水平、垂直、水平垂直居中" class="headerlink" title="水平、垂直、水平垂直居中"></a>水平、垂直、水平垂直居中</h2><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><p>水平居中这个问题首先要搞清楚存在两个条件才能够称之为水平居中，即父元素必须是块级盒子容器，父元素宽度必须已经被设定好，在这两个前提下我们来看水平居中问题。</p>
+<p>场景1：子元素是块级元素且宽度没有设定<br>在这种情况下，实际上也不存在水平居中一说，因为子元素是块级元素没有设定宽度，那么它会充满整个父级元素的宽度，即在水平位置上宽度和父元素一致</p>
+<p>html代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap&quot;&gt;</div><div class="line">   &lt;div class=&quot;non-child&quot;&gt;</div><div class="line">      non-child</div><div class="line">   &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.wrap&#123;</div><div class="line">          width: 300px;</div><div class="line">          height: 200px;</div><div class="line">          border: 2px solid #ccc;</div><div class="line">          box-sizing: border-box;</div><div class="line"></div><div class="line">      &#125;</div><div class="line">        .non-child&#123;</div><div class="line">            border: 1px solid #000;</div><div class="line">            background: green;</div><div class="line"></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>场景2：子元素是行内元素，子元素宽度是由其内容撑开的</p>
+<p>这种情况下解决方案是给父元素设定<code>text-align:center;</code><br>html代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap center&quot;&gt;</div><div class="line">    &lt;span class=&quot;span&quot;&gt;1111&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.wrap&#123;</div><div class="line">        width: 300px;</div><div class="line">        height: 200px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div><div class="line">.span&#123;</div><div class="line">        background: red;</div><div class="line">&#125;</div><div class="line">.center&#123;</div><div class="line">        text-align: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>场景3 子元素是块级元素且宽度已经设定</p>
+<p>这种情形存在多种解法，下面一一来列举</p>
+<p>解法1：给子元素添加<code>margin:0 auto;</code></p>
+<p>HTML代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap&quot;&gt;</div><div class="line">    &lt;div class=&quot;child auto&quot;&gt;</div><div class="line">        non-child</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.child&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        background: green;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div><div class="line">.auto&#123;</div><div class="line">        margin:0 auto;</div><div class="line">&#125;</div><div class="line">.wrap&#123;</div><div class="line">        width: 300px;</div><div class="line">        height: 200px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>解法2：通过计算指定父元素的<code>padding-left</code>或<code>padding-right</code></p>
+<p>HTML代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap padding&quot;&gt;</div><div class="line">    &lt;div class=&quot;child &quot;&gt;</div><div class="line">        non-child</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.child&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        background: green;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div><div class="line">.padding&#123;</div><div class="line">        padding-left: 100px;</div><div class="line">&#125;</div><div class="line">.wrap&#123;</div><div class="line">        width: 300px;</div><div class="line">        height: 200px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果同上，这里计算父元素<code>padding-left</code>或padding-right的方法为(父元素宽度-子元素宽度)/2,注意这里为了计算方便给父元素和子元素都设定了<code>box-sizing:border-box</code>,这样设定的宽度就是包含<code>border+padding+content</code>整个宽度来计算的，如果不设定<code>box-sizing:border-box</code>，浏览器默认是认为<code>content-box</code>,所以设定的宽度仅包含<code>content</code>的宽度，在这种情况下，计算父容器的<code>padding-left</code>或<code>padding-right</code>的方式就是[（父容器content宽度+左右border宽度）-(子容器content宽+水平padding宽+左右border宽)]/2,可以看到较为麻烦，所以这里建议让父元素和子元素都采取<code>border-box</code>.</p>
+<p>解法3：计算得到子元素的<code>margin-left</code>或<code>margin-right</code></p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap&quot;&gt;</div><div class="line">    &lt;div class=&quot;child margin&quot;&gt;</div><div class="line">        non-child</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.child&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        background: green;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div><div class="line">.margin&#123;</div><div class="line">        margin-left:100px;</div><div class="line">&#125;</div><div class="line">.wrap&#123;</div><div class="line">        width: 300px;</div><div class="line">        height: 200px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里计算子元素<code>margin-left</code>或<code>margin-right</code>的方法同上。</p>
+<p>解法4：通过子元素相对父元素绝对定位</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;relative&quot;&gt;</div><div class="line">    &lt;div class=&quot;child absolute&quot;&gt;</div><div class="line">        non-child</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.relative&#123;</div><div class="line">            width: 300px;</div><div class="line">            height: 200px;</div><div class="line">            border: 2px solid #ccc;</div><div class="line">            box-sizing: border-box;</div><div class="line">            position: relative;</div><div class="line">        &#125;</div><div class="line">.absolute&#123;</div><div class="line">            position: absolute;</div><div class="line">            left:50%;</div><div class="line">            margin-left:-50px;</div><div class="line">&#125;</div><div class="line">.child&#123;</div><div class="line">            width: 100px;</div><div class="line">            height: 100px;</div><div class="line">            background: green;</div><div class="line">            box-sizing: border-box;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>结果同上，这里还要设定子元素<code>margin-top</code>为<code>-50</code>是需要消除父元素50%造成的偏移</p>
+<p>解法5：利用flex-box<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;flex&quot;&gt;</div><div class="line">    &lt;div class=&quot;child &quot;&gt;</div><div class="line">        non-child</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.flex&#123;</div><div class="line">        width: 300px;</div><div class="line">        height: 200px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">        display:flex;</div><div class="line">        flex-direction: row;</div><div class="line">        justify-content:center;</div><div class="line">&#125;</div><div class="line">.child&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        background: green;</div><div class="line">        box-sizing: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.垂直居中</p>
+<p>和水平居中一样，这里要讲垂直居中，首先设定两个条件即父元素是盒子容器且高度已经设定</p>
+<p>场景1：子元素是行内元素，高度是由其内容撑开的</p>
+<p>这种情况下，需要通过设定父元素的<code>line-height</code>为其高度来使得子元素垂直居中</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap line-height&quot;&gt;</div><div class="line">    &lt;span class=&quot;span&quot;&gt;111111&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> .wrap&#123;</div><div class="line">        width:200px ;</div><div class="line">        height: 300px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">    &#125;</div><div class="line">.span&#123;</div><div class="line">        background: red;</div><div class="line">&#125;</div><div class="line">.line-height&#123;</div><div class="line">        line-height: 300px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>场景2：子元素是块级元素但是子元素高度没有设定，在这种情况下实际上是不知道子元素的高度的，无法通过计算得到<code>padding</code>或<code>margin</code>来调整，但是还是存在一些解法。</p>
+<p>解法1：通过给父元素设定<code>display:table-cell;vertical-align:middle</code>来解决</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap table-cell&quot;&gt;</div><div class="line">    &lt;div class=&quot;non-height &quot;&gt;11111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.table-cell&#123;</div><div class="line">            display: table-cell;</div><div class="line">            vertical-align: middle;</div><div class="line">        &#125;</div><div class="line">.non-height&#123;</div><div class="line">            background: green;</div><div class="line">        &#125;</div><div class="line">.wrap&#123;</div><div class="line">            width:200px ;</div><div class="line">            height: 300px;</div><div class="line">            border: 2px solid #ccc;</div><div class="line">            box-sizing: border-box;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>解法2：flexbox</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap flex&quot;&gt;</div><div class="line">    &lt;div class=&quot;non-height &quot;&gt;1111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.wrap&#123;</div><div class="line">        width:200px ;</div><div class="line">        height: 300px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">    &#125;</div><div class="line">.non-height&#123;</div><div class="line">        background: green;</div><div class="line">    &#125;</div><div class="line">.flex&#123;</div><div class="line">        display: flex;</div><div class="line">        flex-direction: column;</div><div class="line">        justify-content: center;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>场景3：子元素是块级元素且高度已经设定</p>
+<p>解法1：</p>
+<p>计算子元素的<code>margin-top</code>或<code>margin-bottom</code>，计算方法为父(元素高度-子元素高度)/2</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap &quot;&gt;</div><div class="line">    &lt;div class=&quot;div1 margin&quot;&gt;111111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">  .wrap&#123;</div><div class="line">            width:200px ;</div><div class="line">            height: 300px;</div><div class="line">            border: 2px solid #ccc;</div><div class="line">            box-sizing: border-box;</div><div class="line">        &#125;</div><div class="line">.div1&#123;</div><div class="line">            width:100px ;</div><div class="line">            height: 100px;</div><div class="line">            box-sizing: border-box;</div><div class="line">            background: darkblue;</div><div class="line">        &#125;</div><div class="line">        .margin&#123;</div><div class="line">          margin-top: 100px;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>解法2：计算父元素的<code>padding-top</code>或<code>padding-bottom</code>，计算方法为(父元素高度-子元素高度)/2</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap  padding&quot;&gt;</div><div class="line">    &lt;div class=&quot;div1 &quot;&gt;111111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.wrap&#123;</div><div class="line">        width:200px ;</div><div class="line">        height: 300px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">    &#125;</div><div class="line">.padding&#123;</div><div class="line">        padding-top: 100px;</div><div class="line">    &#125;</div><div class="line">.div1&#123;</div><div class="line">        width:100px ;</div><div class="line">        height: 100px;</div><div class="line">        box-sizing: border-box;</div><div class="line">        background: darkblue;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>解法3：利用绝对定位，让子元素相对于父元素绝对定位</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap  relative&quot;&gt;</div><div class="line">    &lt;div class=&quot;div1 absolute&quot;&gt;111111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.relative&#123;</div><div class="line">        position: relative;</div><div class="line">    &#125;</div><div class="line">    .absolute&#123;</div><div class="line">        position: absolute;</div><div class="line">        top:50%;</div><div class="line">        margin-top: -50px;</div><div class="line">    &#125;</div><div class="line">.wrap&#123;</div><div class="line">        width:200px ;</div><div class="line">        height: 300px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">    &#125;</div><div class="line">.div1&#123;</div><div class="line">        width:100px ;</div><div class="line">        height: 100px;</div><div class="line">        box-sizing: border-box;</div><div class="line">        background: darkblue;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>解法4：利用flexbox</p>
+<p>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap  flex&quot;&gt;</div><div class="line">    &lt;div class=&quot;div1 &quot;&gt;111111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">.flex&#123;</div><div class="line">        display: flex;</div><div class="line">        flex-direction: column;</div><div class="line">        justify-content: center;</div><div class="line">    &#125;</div><div class="line">.wrap&#123;</div><div class="line">        width:200px ;</div><div class="line">        height: 300px;</div><div class="line">        border: 2px solid #ccc;</div><div class="line">        box-sizing: border-box;</div><div class="line">    &#125;</div><div class="line">.div1&#123;</div><div class="line">        width:100px ;</div><div class="line">        height: 100px;</div><div class="line">        box-sizing: border-box;</div><div class="line">        background: darkblue;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>即保证水平居中有保证垂直居中<br>情景一、如果元素宽高确定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</div><div class="line">&lt;title&gt;CSS水平垂直居中&lt;/title&gt;</div><div class="line">&lt;style media=&quot;screen&quot; type=&quot;text/css&quot;&gt;</div><div class="line">.box&#123;</div><div class="line">    position:absolute;</div><div class="line">    top:50%;</div><div class="line">    left:50%;</div><div class="line">    margin:-100px 0 0 -100px;</div><div class="line">    width:200px;</div><div class="line">    height:200px;</div><div class="line">    border:1px solid red;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div class=&quot;box&quot;&gt;123412341241241234124&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>情景二如果元素仅知道宽，不确定高<br>html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap table-cell&quot;&gt;</div><div class="line">    &lt;div class=&quot;non-height &quot;&gt;11111&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.table-cell&#123;</div><div class="line">            display: table-cell;</div><div class="line">            vertical-align: middle;</div><div class="line">        &#125;</div><div class="line">.non-height&#123;</div><div class="line">            background: green;</div><div class="line">        &#125;</div><div class="line">.wrap&#123;</div><div class="line">            width:200px ;</div><div class="line">            height: 300px;</div><div class="line">            border: 2px solid #ccc;</div><div class="line">            box-sizing: border-box;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a>两列布局</h2><p>情景一、左列定宽，右列自适应<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;</div><div class="line">	    &lt;title&gt;CSS布局&lt;/title&gt;</div><div class="line">        &lt;style&gt;</div><div class="line">            body &#123;</div><div class="line">                background-color: #ffffff; </div><div class="line">                font-size:14px;</div><div class="line">                &#125;</div><div class="line">            #hd, #ft &#123;</div><div class="line">                padding:20px 3px; </div><div class="line">                background-color: #cccccc; </div><div class="line">                text-align: center;</div><div class="line">                border:solid 1px #e4e4e4;</div><div class="line">                &#125;</div><div class="line">            /*对所有的类型都定义页面最小宽度为400px*/</div><div class="line">            .bd-lft, .bd-rgt, .bd-3-lr, .bd-3-ll, .bd-3-rr &#123;</div><div class="line">                margin:10px 0; </div><div class="line">                min-width:400px;</div><div class="line">                &#125;</div><div class="line">            .main &#123;</div><div class="line">                background-color: #03a9f4; </div><div class="line">                color:#ffffff;</div><div class="line">                &#125;</div><div class="line">            .aside, .aside-1, .aside-2 &#123;</div><div class="line">                background-color: #00bcd4; </div><div class="line">                color:#ffffff;</div><div class="line">                &#125;</div><div class="line">            p &#123;</div><div class="line">                margin:0; </div><div class="line">                padding:20px; </div><div class="line">                text-align: center;</div><div class="line">                &#125;</div><div class="line">            /* 两列布局之 左侧栏固定宽度，右侧自适应 */</div><div class="line">            .bd-lft&#123;</div><div class="line">                zoom:1;</div><div class="line">                overflow:hidden;</div><div class="line">                padding-left:210px;</div><div class="line">            &#125;</div><div class="line">            .bd-lft .main&#123;</div><div class="line">                width:100%;</div><div class="line">                float:left;</div><div class="line">            &#125;</div><div class="line">            .bd-lft .aside&#123;</div><div class="line">                float:left;</div><div class="line">                position:relative;</div><div class="line">                left:-210px;</div><div class="line">                margin-left:-100%;</div><div class="line">                width:200px;</div><div class="line">                _left: 0; /*IE6 hack*/</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &lt;/style&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;div id=&quot;hd&quot;&gt;头部&lt;/div&gt;</div><div class="line">        &lt;!--两列布局之 左侧栏固定宽度，右侧自适应--&gt;</div><div class="line">        &lt;div class=&quot;bd-lft&quot;&gt;</div><div class="line">            &lt;div class=&quot;main&quot;&gt;&lt;p&gt;右边－自适应&lt;/p&gt;&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;aside&quot;&gt;&lt;p&gt;左边固定宽度&lt;/p&gt;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div id=&quot;ft&quot;&gt;底部&lt;/div&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>情景二、两列布局之左侧自适应，右侧固定宽度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">	&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;</div><div class="line">	&lt;title&gt;圣杯布局&lt;/title&gt;</div><div class="line">	&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">	body &#123;</div><div class="line">        background-color: #ffffff; </div><div class="line">        font-size:14px;</div><div class="line">        &#125;</div><div class="line">	#hd, #ft &#123;</div><div class="line">        padding:20px 3px; </div><div class="line">        background-color: #cccccc; </div><div class="line">        text-align: center;</div><div class="line">        &#125;</div><div class="line">	.bd-lft, .bd-rgt, .bd-3-lr, .bd-3-ll, .bd-3-rr &#123;</div><div class="line">        margin:10px 0; </div><div class="line">        min-width:400px;</div><div class="line">        &#125;</div><div class="line">	.main &#123;</div><div class="line">        background-color: #03a9f4; </div><div class="line">        color:#ffffff;</div><div class="line">        &#125;</div><div class="line">	.aside, .aside-1, .aside-2 &#123;</div><div class="line">        background-color: #00bcd4; </div><div class="line">        color:#ffffff;</div><div class="line">        &#125;</div><div class="line">	p &#123;</div><div class="line">        margin:0; </div><div class="line">        padding:20px; </div><div class="line">        text-align: center;</div><div class="line">        &#125;</div><div class="line">	/* 左侧栏固定宽度，右侧自适应 */</div><div class="line">	.bd-lft &#123;</div><div class="line">	    zoom:1;</div><div class="line">	    overflow:hidden;</div><div class="line">	    padding-left:210px;</div><div class="line">	&#125;</div><div class="line">	.bd-lft .aside &#123;</div><div class="line">	    float:left;</div><div class="line">	    width:200px;</div><div class="line">	    margin-left:-100%; /*= -100%*/</div><div class="line">	    position:relative;</div><div class="line">	    left:-210px; /* = -parantNode.paddingLeft */</div><div class="line">	    _left: 0; /*IE6 hack*/</div><div class="line">	&#125;</div><div class="line">	.bd-lft .main &#123;</div><div class="line">	    float:left;</div><div class="line">	    width:100%;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	/* 右侧栏固定宽度，左侧自适应 */</div><div class="line">	.bd-rgt &#123;</div><div class="line">	    zoom:1;</div><div class="line">	    overflow:hidden;</div><div class="line">	    padding-right:210px;</div><div class="line">	&#125;</div><div class="line">	.bd-rgt .aside &#123;</div><div class="line">	    float:left;</div><div class="line">	    width:200px;</div><div class="line">		margin-left:-200px; /* = -this.width */</div><div class="line">	    position:relative;</div><div class="line">	    right:-210px; /* = -parantNode.paddingRight */</div><div class="line">	&#125;</div><div class="line">	.bd-rgt .main &#123;</div><div class="line">	    float:left;</div><div class="line">	    width:100%;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	/* 左中右 三栏自适应 */</div><div class="line">	.bd-3-lr &#123;</div><div class="line">	    zoom:1;</div><div class="line">	    overflow:hidden;</div><div class="line">	    padding-left:210px;</div><div class="line">	    padding-right:210px;</div><div class="line">	&#125;</div><div class="line">	.bd-3-lr .main &#123;</div><div class="line">		float:left;</div><div class="line">	    width:100%;</div><div class="line">	&#125;</div><div class="line">	.bd-3-lr .aside-1 &#123;</div><div class="line">		float: left;</div><div class="line">		width:200px;</div><div class="line">		margin-left: -100%;</div><div class="line"></div><div class="line">		position:relative;</div><div class="line">		left: -210px;</div><div class="line">		_left: 210px; /*IE6 hack*/</div><div class="line">	&#125;</div><div class="line">	.bd-3-lr .aside-2 &#123;</div><div class="line">		float: left;</div><div class="line">		width:200px;</div><div class="line">		margin-left: -200px;</div><div class="line"></div><div class="line">		position:relative;</div><div class="line">		right: -210px;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/* 都在左边，右侧自适应 */</div><div class="line">	.bd-3-ll &#123;</div><div class="line">	    zoom:1;</div><div class="line">	    overflow:hidden;</div><div class="line">	    padding-left:420px;</div><div class="line">	&#125;</div><div class="line">	.bd-3-ll .main &#123;</div><div class="line">		float:left;</div><div class="line">	    width:100%;</div><div class="line">	&#125;</div><div class="line">	.bd-3-ll .aside-1 &#123;</div><div class="line">		float: left;</div><div class="line">		width:200px;</div><div class="line">		margin-left: -100%;</div><div class="line"></div><div class="line">		position:relative;</div><div class="line">		left: -420px;</div><div class="line">		_left: 0px; /*IE6 hack*/</div><div class="line">	&#125;</div><div class="line">	.bd-3-ll .aside-2 &#123;</div><div class="line">		float: left;</div><div class="line">		width:200px;</div><div class="line">		margin-left: -100%;</div><div class="line"></div><div class="line">		position:relative;</div><div class="line">		left: -210px;</div><div class="line">		_left: 210px; /*IE6 hack*/</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/* 都在右边，左侧自适应 */</div><div class="line">	.bd-3-rr &#123;</div><div class="line">	    zoom:1;</div><div class="line">	    overflow:hidden;</div><div class="line">	    padding-right:420px;</div><div class="line">	&#125;</div><div class="line">	.bd-3-rr .main &#123;</div><div class="line">		float:left;</div><div class="line">	    width:100%;</div><div class="line">	&#125;</div><div class="line">	.bd-3-rr .aside-1 &#123;</div><div class="line">		float: left;</div><div class="line">		width:200px;</div><div class="line">		margin-left: -200px;</div><div class="line"></div><div class="line">		position:relative;</div><div class="line">		right: -210px;</div><div class="line">	&#125;</div><div class="line">	.bd-3-rr .aside-2 &#123;</div><div class="line">		float: left;</div><div class="line">		width:200px;</div><div class="line">		margin-left: -200px;</div><div class="line"></div><div class="line">		position:relative;</div><div class="line">		right: -420px;</div><div class="line">	&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div id=&quot;hd&quot;&gt;头部&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;bd-lft&quot;&gt;</div><div class="line">		&lt;div class=&quot;main&quot;&gt;</div><div class="line">			&lt;p&gt;主内容栏自适应宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;aside&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">	&lt;div class=&quot;bd-rgt&quot;&gt;</div><div class="line">		&lt;div class=&quot;main&quot;&gt;</div><div class="line">			&lt;p&gt;主内容栏自适应宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"></div><div class="line">	&lt;div class=&quot;bd-3-lr&quot;&gt;</div><div class="line">		&lt;div class=&quot;main&quot;&gt;</div><div class="line">			&lt;p&gt;主内容栏自适应宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside-1&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏1固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside-2&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏2固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"></div><div class="line">	&lt;div class=&quot;bd-3-ll&quot;&gt;</div><div class="line">		&lt;div class=&quot;main&quot;&gt;</div><div class="line">			&lt;p&gt;主内容栏自适应宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside-1&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏1固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside-2&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏2固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"></div><div class="line">	&lt;div class=&quot;bd-3-rr&quot;&gt;</div><div class="line">		&lt;div class=&quot;main&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏2固定宽度侧边栏2固定宽度侧边栏2固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside-1&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏1固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;div class=&quot;aside-2&quot;&gt;</div><div class="line">			&lt;p&gt;侧边栏2固定宽度&lt;/p&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	</div><div class="line">	&lt;div id=&quot;ft&quot;&gt;底部&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>##三列布局</p>
+<p>见<strong>圣杯布局详解（翻译）、双飞翼布局详解</strong></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/04/CSS常用布局/" class="archive-article-date">
+  	<time datetime="2017-02-04T14:41:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/02/04/2.8.2、静态属性和方法－类型检测/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jQuery技术内幕 2.8.2、静态属性和方法－类型检测
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/04/圣杯布局详解（翻译）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">圣杯布局详解（翻译）、双飞翼布局详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CSS常用布局" data-title="CSS常用的经典布局" data-url="http://yoursite.com/2017/02/04/CSS常用布局/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

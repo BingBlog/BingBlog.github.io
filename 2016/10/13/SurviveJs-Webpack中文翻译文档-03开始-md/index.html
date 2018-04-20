@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>SurviveJs-Webpack中文翻译文档-03开始.md | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="开始！首先确认你实用的是当前的Node.js版本。推荐至少使用最近的长期支持的版本。请终端应该能使用确保node和npm命令。 完整的配置文件请参考Github。在学习时可以作为参考。  也可以使用Vagrant或者nvm来创建一个更可控的环境。Vagrant基于虚拟机，会造成性能下降。Vagrant在团队环境中特别有用，它可以给你一个可预见的环境来进行开发。 老版本的Node.js会有很多问题，">
+<meta name="keywords" content="学习,SurviveJs,Webpack,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SurviveJs-Webpack中文翻译文档-03开始.md">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-03开始-md/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="开始！首先确认你实用的是当前的Node.js版本。推荐至少使用最近的长期支持的版本。请终端应该能使用确保node和npm命令。 完整的配置文件请参考Github。在学习时可以作为参考。  也可以使用Vagrant或者nvm来创建一个更可控的环境。Vagrant基于虚拟机，会造成性能下降。Vagrant在团队环境中特别有用，它可以给你一个可预见的环境来进行开发。 老版本的Node.js会有很多问题，">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SurviveJs-Webpack中文翻译文档-03开始.md">
+<meta name="twitter:description" content="开始！首先确认你实用的是当前的Node.js版本。推荐至少使用最近的长期支持的版本。请终端应该能使用确保node和npm命令。 完整的配置文件请参考Github。在学习时可以作为参考。  也可以使用Vagrant或者nvm来创建一个更可控的环境。Vagrant基于虚拟机，会造成性能下降。Vagrant在团队环境中特别有用，它可以给你一个可预见的环境来进行开发。 老版本的Node.js会有很多问题，">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SurviveJs-Webpack中文翻译文档-03开始-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SurviveJs-Webpack中文翻译文档-03开始.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="开始！"><a href="#开始！" class="headerlink" title="开始！"></a>开始！</h2><p>首先确认你实用的是当前的Node.js版本。推荐至少使用最近的长期支持的版本。请终端应该能使用确保node和npm命令。</p>
+<p>完整的配置文件请参考<em><a href="https://github.com/survivejs-demos/webpack-demo" target="_blank" rel="external">Github</a></em>。在学习时可以作为参考。</p>
+<blockquote>
+<p>也可以使用Vagrant或者nvm来创建一个更可控的环境。Vagrant基于虚拟机，会造成性能下降。Vagrant在团队环境中特别有用，它可以给你一个可预见的环境来进行开发。</p>
+<p>老版本的Node.js会有很多问题，需要一些额外处理，不建议使用。</p>
+</blockquote>
+<h2 id="设置项目"><a href="#设置项目" class="headerlink" title="设置项目"></a>设置项目</h2><p>开始之前，创建一个项目文件夹，并生成一个pakage.json文件。npm会使用这个文件来管理项目依赖。命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir Webpack</div><div class="line">cd Webpack</div><div class="line">npm init -y # -y generates *package.json*, skip for more control</div></pre></td></tr></table></figure></p>
+<p>终端显示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;Webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;keywords&quot;: [],</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;webpack&quot;: &quot;^1.13.2&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你也可以手动创建pakage.json文件，并做自己的更改。我们也将通过npm工具对其进行修改，但是手动更改是可以的。<em><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">官方文档</a></em>详细描述了各类pakage.json文件的选项。</p>
+<blockquote>
+<p>You can set those npm init defaults at ~/.npmrc.</p>
+</blockquote>
+<h2 id="安装Webpack"><a href="#安装Webpack" class="headerlink" title="安装Webpack"></a>安装Webpack</h2><p>虽然Webpack可以全局安装（<code>npm install -g</code>）,但还是建议作为一个单独的依赖维护在项目中。这样将避免后期你将使用其它版本的Webpack是所引起的不兼容。</p>
+<p>这种方式在<strong>持续集成－Continuous Integration (CI)</strong>配置中也很好用。持续集成系统可以安装本地依赖，使用依赖编译项目，然后将结果更新到服务器。</p>
+<p>使用如下命令来安装Webpack到我们的项目中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i webpack --save-dev # or just -D if you want to save typing</div></pre></td></tr></table></figure></p>
+<p>安装技术后你将在你的pakage.json文件中的<code>devDependencies</code>里面看到Webpack的版本信息。除了将模块包安装到了node_modules文件夹中，npm也创建了一个可执行程序。</p>
+<h2 id="执行Webpack"><a href="#执行Webpack" class="headerlink" title="执行Webpack"></a>执行Webpack</h2><p>在终端中输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm bin</div></pre></td></tr></table></figure></p>
+<p>终端展示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Users/bing/Documents/workspase/Webpack/node_modules/.bin</div></pre></td></tr></table></figure></p>
+<p>其中Webpack是项目文件，node_modules/.bin是执行文件路径。通过这个命令可以执行Webpack:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node_modules/.bin/webpack</div></pre></td></tr></table></figure></p>
+<p>终端输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">webpack 1.13.2</div><div class="line">Usage: https://webpack.github.io/docs/cli.html</div><div class="line"></div><div class="line">Options:</div><div class="line">  --help, -h, -?      </div><div class="line">  --config     </div><div class="line">  --context       </div><div class="line">  --entry </div><div class="line">  --module-bind</div><div class="line">  --module-bind-post</div><div class="line">  --module-bind-pre</div><div class="line">  --output-path                                                                  </div><div class="line">  --output-file      </div><div class="line">  --output-chunk-file</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>使用<code>--save</code>和<code>--save-dev</code>将应用依赖和开发依赖分开。前者将信息写在pakage.json文件中的<code>dependencies</code>中，后者写在<code>devDependencies</code>中。</p>
+</blockquote>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>作为一个项目仅有一个孤零零的pakage.json文件是不行的，我们需要创建一些更具体的东西。现在，我们开始实现一个小小的web网站并加载一些JavaScript，而且我们将用Webpack来对这些文件进行构建。现在开始按照一些结构创建一个项目文件：</p>
+<p>-app/<br>–index.js<br>–component.js<br>-build/<br>-package.json<br>-webpack.config.js</p>
+<p>我们的想法就是将app/中的文件通过转换后输出到build/。接下来，我们开始编写代码和配置最关键的webpack.config.js。</p>
+<h2 id="编写资源代码"><a href="#编写资源代码" class="headerlink" title="编写资源代码"></a>编写资源代码</h2><p>就像你从来不会对<code>hello word</code>厌烦，我们也将实现一个类似的东西。如下创建一个组建：<br><strong>app/component.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = function () &#123;</div><div class="line">  var element = document.createElement(&apos;h1&apos;);</div><div class="line"></div><div class="line">  element.innerHTML = &apos;Hello world&apos;;</div><div class="line"></div><div class="line">  return element;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>再创建一个应用的入口文件并加载我们之前创建的component组建同时渲染到DOM中。</p>
+<p><strong>app/index.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var component = require(&apos;./component&apos;);</div><div class="line"></div><div class="line">document.body.appendChild(component());</div></pre></td></tr></table></figure>
+<h2 id="编写Webpack配置文件"><a href="#编写Webpack配置文件" class="headerlink" title="编写Webpack配置文件"></a>编写Webpack配置文件</h2><p>我们需要告诉webpack如何处理我们之前创建的文件。因此，我们要编写一个webpack.config.js文件。Webpack及其开发服务将会根据惯例找到该配置文件。</p>
+<p>为了更好的维护项目，我们将使用*<a href="https://www.npmjs.com/package/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a>来为应用生成一个index.html文件。html-webpack-plugin将该文件同之前的文件连接起来。安装命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i html-webpack-plugin --save-dev</div></pre></td></tr></table></figure></p>
+<p>下面是用来配置插件和在build文件夹中生成bundle文件的webpack配置文件：<br><strong>webpack.config.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">const PATHS = &#123;</div><div class="line">  app: path.join(__dirname, &apos;app&apos;),</div><div class="line">  build: path.join(__dirname, &apos;build&apos;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  // Entry accepts a path or an object of entries.</div><div class="line">  // We&apos;ll be using the latter form given it&apos;s</div><div class="line">  // convenient with more complex configurations.</div><div class="line">  entry: &#123;</div><div class="line">    app: PATHS.app</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: PATHS.build,</div><div class="line">    filename: &apos;[name].js&apos;</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">      title: &apos;Webpack demo&apos;</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p><code>entry</code>路径可以设置成相对路径。官方文档中的<a href="https://webpack.github.io/docs/configuration.html#context" target="_blank" rel="external"><em>context</em></a>（上下文）段落可用来配置查找。由于很多地方需要使用绝对定位路径，我也喜欢都在任何地方用绝对路径来避免懵掉。</p>
+<p>在终端执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://webpack.github.io/docs/configuration.html#context</div></pre></td></tr></table></figure></p>
+<p>将会看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Hash: 87c1e5f935ae062f6501</div><div class="line">Version: webpack 1.13.2</div><div class="line">Time: 510ms</div><div class="line">     Asset       Size  Chunks             Chunk Names</div><div class="line">    app.js    1.69 kB       0  [emitted]  app</div><div class="line">index.html  180 bytes          [emitted]  </div><div class="line">   [0] ./app/index.js 80 bytes &#123;0&#125; [built]</div><div class="line">   [1] ./app/component.js 140 bytes &#123;0&#125; [built]</div><div class="line">Child html-webpack-plugin for &quot;index.html&quot;:</div><div class="line">        + 3 hidden modules</div></pre></td></tr></table></figure>
+<p>输出信息很多：<br>-<code>Hash: 87c1e5f935ae062f6501</code>-本次build构建的hash值。你可以通过<code>[hash]</code>占位符来废弃资源文件。我们将在<strong>向文件名中添加hash(Adding Hashes to Filenames)</strong>章节来详细讲解。<br>-<code>Version: webpack 1.13.2</code>-Webpack版本<br>-<code>Time: 510ms</code>执行构建的时间<br>-<code>app.js    1.69 kB       0  [emitted]  app</code>-资源文件名，大小，关联的模块ID，状态信息标示资源如何生成，模块名称。<br>-<code>[0] ./app/index.js 80 bytes {0} [built]</code>-生成文件的id，名称，大小，入口模块ID，生成方式<br>-<code>Child html-webpack-plugin for&quot;index.html&quot;:</code>-插件相关的输出信息。html-webpack-plugin生成了index.html<br>-<code>+ 3 hidden modules</code>Webpack隐藏了一些信息，也就是一些模块信息和路径。在终端输入<code>node_modules/.bin/webpack --display-modules</code>将会展示这些信息。点击查看<em><a href="https://stackoverflow.com/questions/28858176/what-does-webpack-mean-by-xx-hidden-modules" target="_blank" rel="external">更多解释</a></em>。</p>
+<blockquote>
+<p>Webpack hides modules coming from folders like <code>[&quot;node_modules&quot;, &quot;bower_components&quot;, &quot;jam&quot;, &quot;components&quot;]</code> in your console output by default. This helps you to focus on your modules instead on your dependencies.<br>You can display them by using the <code>--display-modules</code> argument.</p>
+</blockquote>
+<p>查看<code>build</code>目录下的输出。如果瞧仔细了，你会看见和输入信息中ID相同的资源。在浏览器中直接打开<code>build/index.html</code>文件，在mac中可直接输入<code>open ./build/index.html</code>.你将在浏览器看到输出的hello world。</p>
+<blockquote>
+<p>使用一个类似于server的工具来将<code>build</code>目录添加都服务端将很方便，可以使用<code>npm i serve -g</code>来安装这个工具，然后在输出文件夹中输入<code>server</code>,之后浏览器访问<code>localhost:3000&#39;。可以使用</code>–port`参数指定端口。</p>
+<p>个人比较喜欢使用<code>path.join</code>，但是<code>path.resolve</code>也是一个不错测选择。具体请查看 <em><a href="https://nodejs.org/api/path.html" target="_blank" rel="external">Node.js path API</a></em>,两者作用如下,官方解释还请看文档。<br><strong>path.join</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">path.join(&apos;/foo&apos;, &apos;bar&apos;, &apos;baz/asdf&apos;, &apos;quux&apos;, &apos;..&apos;)</div><div class="line">// returns &apos;/foo/bar/baz/asdf&apos;</div><div class="line"></div><div class="line">path.join(&apos;foo&apos;, &#123;&#125;, &apos;bar&apos;)</div><div class="line">// throws TypeError: Arguments to path.join must be string</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>strong text</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">path.resolve(&apos;/foo/bar&apos;, &apos;./baz&apos;)</div><div class="line">// returns &apos;/foo/bar/baz&apos;</div><div class="line"></div><div class="line">path.resolve(&apos;/foo/bar&apos;, &apos;/tmp/file/&apos;)</div><div class="line">// returns &apos;/tmp/file&apos;</div><div class="line"></div><div class="line">path.resolve(&apos;wwwroot&apos;, &apos;static_files/png/&apos;, &apos;../gif/image.gif&apos;)</div><div class="line">// if the current working directory is /home/myself/node,</div><div class="line">// this returns &apos;/home/myself/node/wwwroot/static_files/gif/image.gif&apos;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><em><a href="https://www.npmjs.com/package/favicons-webpack-plugin" target="_blank" rel="external">favicons-webpack-plugin</a></em>可以让webpack很方便的处理网站图标,而且可以和<em>html-webpack-plugin</em>结合使用。</p>
+</blockquote>
+<h2 id="添加打包命令缩写"><a href="#添加打包命令缩写" class="headerlink" title="添加打包命令缩写"></a>添加打包命令缩写</h2><p>由于执行node_modules/.bin/webpack输入太多，我们可以在pakage.json中配置命令。如下：<br><strong>pakage.json</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;build&quot;: &quot;webpack&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>现在我们可以使用npm run 来启动脚本。例如，我们在终端输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure></p>
+<p>你将看到和之前一样的结果。</p>
+<p>由于<code>npm</code>将<code>node_modules/.bin</code>临时的添加到了执行目录。所以我们不用写<code>&quot;build&quot;: &quot;node_modules/.bin/webpack&quot;</code>，仅配置<code>&quot;build&quot;: &quot;webpack&quot;</code>就够了。</p>
+<blockquote>
+<p>也有一些缩写，如 npm start 和 npm test。这些简写不需要输入 npm run</p>
+<p>在项目的任意地方都可以执行npm run而不仅限于项目的根目录。</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>现在我们已经搭建了一个Webpack的基本应用，但这远远不够。用这样的构建来开发仍然比较痛苦。每次我们更改了应用，都需要手动输入<code>npm run build</code>,然后刷新浏览器。</p>
+<p>稍后我们将介绍Webpack用来解决以上问题的更先进的特性。同时由于这些特性需要特定的环境，我将在下一章向你展示如何将Webpack的配置文件进行分离。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-03开始-md/" class="archive-article-date">
+  	<time datetime="2016-10-13T08:36:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SurviveJs/">SurviveJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-04配置拆分-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SurviveJs-Webpack中文翻译文档-04配置拆分.md
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-02使用Webpack开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SurviveJs-Webpack中文翻译文档-02使用Webpack开发</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SurviveJs-Webpack中文翻译文档-03开始-md" data-title="SurviveJs-Webpack中文翻译文档-03开始.md" data-url="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-03开始-md/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

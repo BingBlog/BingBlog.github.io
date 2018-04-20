@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>SurviveJs-Webpack中文翻译文档-05浏览器自动刷新.md | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="浏览器自动刷新LiveReload或者Browsersync这些工具，让我们可以在开发中自动刷新浏览器，甚至可以在更改CSS后自动刷新浏览器。 开发环境中一个很好的尝试就是直接使用Webpack的watch模式。可以在启动webpack的时候用webpack --watch来配置。配置后，webpack会发现文件的更改并自动重新编译。另外一中方式就是使用webpack-dev-server,它也是">
+<meta name="keywords" content="学习,SurviveJs,Webpack,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SurviveJs-Webpack中文翻译文档-05浏览器自动刷新.md">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-05浏览器自动刷新-md/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="浏览器自动刷新LiveReload或者Browsersync这些工具，让我们可以在开发中自动刷新浏览器，甚至可以在更改CSS后自动刷新浏览器。 开发环境中一个很好的尝试就是直接使用Webpack的watch模式。可以在启动webpack的时候用webpack --watch来配置。配置后，webpack会发现文件的更改并自动重新编译。另外一中方式就是使用webpack-dev-server,它也是">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SurviveJs-Webpack中文翻译文档-05浏览器自动刷新.md">
+<meta name="twitter:description" content="浏览器自动刷新LiveReload或者Browsersync这些工具，让我们可以在开发中自动刷新浏览器，甚至可以在更改CSS后自动刷新浏览器。 开发环境中一个很好的尝试就是直接使用Webpack的watch模式。可以在启动webpack的时候用webpack --watch来配置。配置后，webpack会发现文件的更改并自动重新编译。另外一中方式就是使用webpack-dev-server,它也是">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SurviveJs-Webpack中文翻译文档-05浏览器自动刷新-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SurviveJs-Webpack中文翻译文档-05浏览器自动刷新.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="浏览器自动刷新"><a href="#浏览器自动刷新" class="headerlink" title="浏览器自动刷新"></a>浏览器自动刷新</h1><p><em><a href="http://livereload.com/" target="_blank" rel="external">LiveReload</a></em>或者<em><a href="http://www.browsersync.io/" target="_blank" rel="external">Browsersync</a></em>这些工具，让我们可以在开发中自动刷新浏览器，甚至可以在更改CSS后自动刷新浏览器。</p>
+<p>开发环境中一个很好的尝试就是直接使用Webpack的<strong>watch</strong>模式。可以在启动webpack的时候用<code>webpack --watch</code>来配置。配置后，webpack会发现文件的更改并自动重新编译。另外一中方式就是使用webpack-dev-server,它也是以<code>watch</code>模式为基础，但是功能要更强大。</p>
+<p>webpack-dev-server是一个运行在内存中的开发服务。当你更改你的应用后，将会更新内容。它也支持Webapck其它更先进的特性如热加载Hot Module Replacement (HMR)，采用对浏览器打补丁的方式而不是全部刷新。当与React技术结合起来的时候，就特别强大了。</p>
+<blockquote>
+<p>特别需要提醒的是，<em>webpack-dev-server</em>只能用在开发环境，如果想启用正式的应用环境，建议采用其它标准的模式，如Apache或者Nginx。</p>
+<p>一个叫做安全写入的IDE特性会在使用热加载时变得不可控。在创建基于热加载的架构时将该特性关闭是非常明智的做法。</p>
+</blockquote>
+<h2 id="开始使用webpack-dev-server"><a href="#开始使用webpack-dev-server" class="headerlink" title="开始使用webpack-dev-server"></a>开始使用<em>webpack-dev-server</em></h2><p>安装 <em>webpack-dev-server</em>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i webpack-dev-server --save-dev</div></pre></td></tr></table></figure>
+<p>首先，这个命令将会在 <code>npm bin</code>目录下生成一个命令。你可以尝试用它启动<em>webpack-dev-server</em>。最快速实现浏览器为我们的项目自动刷新的方式就是直接执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack-dev-server --inline</div></pre></td></tr></table></figure></p>
+<p><code>--inling</code>,在<code>inline</code>模式下启动服务，将webpack-dev-server客户端加入到webpack入口文件的配置中。</p>
+<h3 id="添加webpack-dev-server到项目中"><a href="#添加webpack-dev-server到项目中" class="headerlink" title="添加webpack-dev-server到项目中"></a>添加webpack-dev-server到项目中</h3><p>为了将<em>webpack-dev-server</em>整合到我们的项目中，我们可以按照前一章的想法，在<code>pakage.json</code>启动脚本<code>script</code>配置中定义一个新的命令:<br><strong>package.json</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">leanpub-start-insert</div><div class="line">  &quot;start&quot;: &quot;webpack-dev-server&quot;,</div><div class="line">leanpub-end-insert</div><div class="line">  &quot;build&quot;: &quot;webpack&quot;</div><div class="line">&#125;,</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p><code>--inline</code>将被添加在Webpack配置文件中。我喜欢尽量保持npm命令的简洁，将复杂的配置项都交给webpack配置文件。尽管这样要写更多的代码，，但是却更容易理解所发生的事情，而且维护起来也更简单。</p>
+<p>现在不论是执行npm start还是npm run start,你都会看到如下结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; Webpack@1.0.0 start /Users/bing/Documents/workspase/Webpack</div><div class="line">&gt; webpack-dev-server</div><div class="line"></div><div class="line"> http://localhost:8080/webpack-dev-server/</div><div class="line">webpack result is served from /</div><div class="line">content is served from /Users/bing/Documents/workspase/Webpack</div><div class="line">Hash: 87c1e5f935ae062f6501</div><div class="line">Version: webpack 1.13.2</div></pre></td></tr></table></figure></p>
+<p>这表示我们的开发服务已经运行了。打开<code>http://localhost:8080/</code>，你将看到和之前一样的hello world。</p>
+<p>当你修改了你的代码，终端将会输出新的信息。但是，到目前为止，浏览器还不能捕获到更改进而不能自动刷新，只有当你手动刷新时，才会更新。接下来我们将解决这个问题。</p>
+<blockquote>
+<p>如果你看到浏览器出现了一些错误，你可能需要更换一个端口，因为其它的应用程序可能已经占用了这个端口。你可以使用`netstat -na | grep 8080来确认。若果有其他程序在使用8080端口，将会有信息展示出来。当然，不同的系统，可能命令有差别。</p>
+</blockquote>
+<h2 id="配置热加载"><a href="#配置热加载" class="headerlink" title="配置热加载"></a>配置热加载</h2><p>热加载搭建在<em>webpack-dev-server</em>之上，通过增加接口来实现对模块儿的动态扫描。例如：CSS加载器<code>style-loader</code>可以在不刷新的情况下更新css。因为它不关注应用的其它状态，所以能很好的处理CSS的热加载。</p>
+<p>热加载也可以应用在JavaScript文件上，但是由于应用的状态，这将稍微负责一些。在<strong>React配置（Configuring React）</strong>章节我们会详细讲解。</p>
+<p>我们可以使用<code>webpack-dev-server --inline --hot</code>来实现客户端的热加载。<code>--hot</code>可以使Webpack利用一个特定插件来将入口信息写到一个相关的javascript文件中。</p>
+<h2 id="热加载的配置项"><a href="#热加载的配置项" class="headerlink" title="热加载的配置项"></a>热加载的配置项</h2><p>为了可以更好的管理我们的配置文件，我将把如热加载这样的功能拆分到新的文件以保持其独立性。这样使得webpack.config.js文件简洁且可复用。我们可以将这样的组合作为一个独立的npm包。我们甚至可以将它们<br>We could push a collection like this to a npm package of its own. We could even turn them into presets to use across projects. Functional composition allows that.</p>
+<p>我将会提交所有的配置信息到<code>libs.parts.js</code>文件，在使用时再从这里引用。下面的就是热加载配置的部分：</p>
+<p><strong>libs/parts.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line">const merge = require(&apos;webpack-merge&apos;);</div><div class="line">const validate = require(&apos;webpack-validator&apos;);</div><div class="line"></div><div class="line">leanpub-start-insert</div><div class="line">const parts = require(&apos;./libs/parts&apos;);</div><div class="line">leanpub-end-insert</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">// Detect how npm is run and branch based on that</div><div class="line">switch(process.env.npm_lifecycle_event) &#123;</div><div class="line">  case &apos;build&apos;:</div><div class="line">    config = merge(common, &#123;&#125;);</div><div class="line">    break;</div><div class="line">  default:</div><div class="line">leanpub-start-delete</div><div class="line">    config = merge(common, &#123;&#125;);</div><div class="line">leanpub-end-delete</div><div class="line">leanpub-start-insert</div><div class="line">    config = merge(</div><div class="line">      common,</div><div class="line">      parts.devServer(&#123;</div><div class="line">        // Customize host/port here if needed</div><div class="line">        host: process.env.HOST,</div><div class="line">        port: process.env.PORT</div><div class="line">      &#125;)</div><div class="line">    );</div><div class="line">leanpub-end-insert</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = validate(config);</div></pre></td></tr></table></figure>
+<p>啊哈，的确是比较多的代码，主要是因为我们希望让配置文件看起来容易理解，并可以在以后复用。幸运的是当我们在主配置文件中引入时就变的是很简单了。</p>
+<p><strong>weback.config.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line">const merge = require(&apos;webpack-merge&apos;);</div><div class="line">const validate = require(&apos;webpack-validator&apos;);</div><div class="line"></div><div class="line"></div><div class="line">const parts = require(&apos;./libs/parts&apos;);</div><div class="line"></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">// Detect how npm is run and branch based on that</div><div class="line">switch(process.env.npm_lifecycle_event) &#123;</div><div class="line">  case &apos;build&apos;:</div><div class="line">    config = merge(common, &#123;&#125;);</div><div class="line">    break;</div><div class="line">  default:</div><div class="line"></div><div class="line">--    config = merge(common, &#123;&#125;);</div><div class="line"></div><div class="line">    config = merge(</div><div class="line">      common,</div><div class="line">      parts.devServer(&#123;</div><div class="line">        // Customize host/port here if needed</div><div class="line">        host: process.env.HOST,</div><div class="line">        port: process.env.PORT</div><div class="line">      &#125;)</div><div class="line">    );</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在终端执行<code>npm start</code>,在浏览器中打开<code>localhost:8080</code>,再更改`app/component.js’文件。浏览器便会自动刷新。要注意的是，当你改变了javascript代码后，会硬（？）刷新浏览器。CSS的更改和应用更加简单利索，我们家辉在下一章讲解。</p>
+<blockquote>
+<p><em>webpack-dev-server</em>对路径要求比较严。如果提供的<code>include</code>路径与系统不匹配，可能会操成错误。具体请参考<strong><em><a href="https://github.com/webpack/webpack/issues/675" target="_blank" rel="external">issue#675</a></em></strong></p>
+<p>你也可以使用另外一个路径来访问应用;localhost:8080/webpack-dev-server/ 。它将会在应用的上方展示浏览器的相关操作信息。</p>
+</blockquote>
+<h2 id="在Windows-Ubuntu和Vagrant上配置热加载"><a href="#在Windows-Ubuntu和Vagrant上配置热加载" class="headerlink" title="在Windows,Ubuntu和Vagrant上配置热加载"></a>在Windows,Ubuntu和Vagrant上配置热加载</h2><p>上面的配置可能在一些Windows,Ubuntu和Vagrant环境上有问题。下面的配置也许可以解决：</p>
+<p><strong>libs/parts.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">const webpack = require(&apos;webpack&apos;);</div><div class="line"></div><div class="line">exports.devServer = function(options) &#123;</div><div class="line">  return &#123;</div><div class="line">leanpub-start-insert</div><div class="line">    watchOptions: &#123;</div><div class="line">      // Delay the rebuild after the first change</div><div class="line">      aggregateTimeout: 300,</div><div class="line">      // Poll using interval (in ms, accepts boolean too)</div><div class="line">      poll: 1000</div><div class="line">    &#125;,</div><div class="line">leanpub-end-insert</div><div class="line">    devServer: &#123;</div><div class="line">      ...</div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于这个的配置会去轮询文件系统，所以在默认情况不好使时需要给予权限。</p>
+<blockquote>
+<p>更多请见<strong><em><a href="https://github.com/webpack/webpack-dev-server/issues/155" target="_blank" rel="external">＃155</a></em></strong></p>
+</blockquote>
+<h2 id="通过网络连接其它机器的开发服务"><a href="#通过网络连接其它机器的开发服务" class="headerlink" title="通过网络连接其它机器的开发服务"></a>通过网络连接其它机器的开发服务</h2><p>如果你想访问另外一台机器上的开发服务，你可以通过配置ip和端口来实现。</p>
+<h2 id="Webpack-dev-server的其它用法"><a href="#Webpack-dev-server的其它用法" class="headerlink" title="Webpack-dev-server的其它用法"></a>Webpack-dev-server的其它用法</h2><p>我们也可以使用Express自己搭建一个服务器，仅将webpack-dev-server作为一个<strong><em><a href="https://webpack.github.io/docs/webpack-dev-middleware.html" target="_blank" rel="external">中间件(middleware)</a></em></strong>。也可以使用Node.js API。这样你可以自己控制，并足够灵活。</p>
+<blockquote>
+<p><strong><em><a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="external">dotenv</a></em></strong>可以让你通过一个<code>.envfile</code>文件来定义环境环境变量。在开发时比较方便。</p>
+<p>请注意，CLI和Node.js API之间有细小的差别。所以有些人喜欢全部用Nde.js API。</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本章，学习了搭建一个可以自动刷新浏览器的Webpack框架。为了使其更完美的处理CSS文件，我们将在下一章更上一层楼！</p>
+<blockquote>
+<p>相关博客可参考：<br><a href="http://www.cnblogs.com/hhhyaaon/p/5664002.html" target="_blank" rel="external">http://www.cnblogs.com/hhhyaaon/p/5664002.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-05浏览器自动刷新-md/" class="archive-article-date">
+  	<time datetime="2016-10-13T08:38:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SurviveJs/">SurviveJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-06自动刷新CSS-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SurviveJs-Webpack中文翻译文档-06自动刷新CSS.md
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-04配置拆分-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SurviveJs-Webpack中文翻译文档-04配置拆分.md</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SurviveJs-Webpack中文翻译文档-05浏览器自动刷新-md" data-title="SurviveJs-Webpack中文翻译文档-05浏览器自动刷新.md" data-url="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-05浏览器自动刷新-md/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

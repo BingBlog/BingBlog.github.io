@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JavaScript进行数据验证 | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="需求场景随着前端应用的复杂度越来越高，逻辑也变得越来越重，对数据的处理和校验也变得越来重要。在前端开发中，如何使用JavaScript进行高效、灵活的数据校验？本文将自己的事件分享出来。 一个复杂的需求如下使我们要提交的数据，结构虽然不是很复杂，但是需要满足一下条件：  baseTable: 基准表必选  tableConf: 如选择使用时间(isShowTime)，则时间字段(timeField">
+<meta name="keywords" content="JavaScript,学习,validate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript进行数据验证">
+<meta property="og:url" content="http://yoursite.com/2017/10/20/JavaScript进行数据验证/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="需求场景随着前端应用的复杂度越来越高，逻辑也变得越来越重，对数据的处理和校验也变得越来重要。在前端开发中，如何使用JavaScript进行高效、灵活的数据校验？本文将自己的事件分享出来。 一个复杂的需求如下使我们要提交的数据，结构虽然不是很复杂，但是需要满足一下条件：  baseTable: 基准表必选  tableConf: 如选择使用时间(isShowTime)，则时间字段(timeField">
+<meta property="og:updated_time" content="2017-10-24T08:43:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript进行数据验证">
+<meta name="twitter:description" content="需求场景随着前端应用的复杂度越来越高，逻辑也变得越来越重，对数据的处理和校验也变得越来重要。在前端开发中，如何使用JavaScript进行高效、灵活的数据校验？本文将自己的事件分享出来。 一个复杂的需求如下使我们要提交的数据，结构虽然不是很复杂，但是需要满足一下条件：  baseTable: 基准表必选  tableConf: 如选择使用时间(isShowTime)，则时间字段(timeField">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-JavaScript进行数据验证" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript进行数据验证
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="需求场景"><a href="#需求场景" class="headerlink" title="需求场景"></a>需求场景</h1><p>随着前端应用的复杂度越来越高，逻辑也变得越来越重，对数据的处理和校验也变得越来重要。在前端开发中，如何使用JavaScript进行高效、灵活的数据校验？本文将自己的事件分享出来。</p>
+<h2 id="一个复杂的需求"><a href="#一个复杂的需求" class="headerlink" title="一个复杂的需求"></a>一个复杂的需求</h2><p>如下使我们要提交的数据，结构虽然不是很复杂，但是需要满足一下条件：</p>
+<ol>
+<li><p>baseTable: 基准表必选</p>
+</li>
+<li><p>tableConf: 如选择使用时间(isShowTime)，则时间字段(timeField)必选</p>
+</li>
+<li><p>field</p>
+<ol>
+<li>显示名称必填，字数不能超过六个</li>
+<li>排序必填，切为数值型字符</li>
+<li>map要符合a::b,c::d的格式，正则为<br>/^([\w]+[\:]{2}[\w]+\,)*([\w]+[\:]{2}[\w]+)$/，其中a、b、c、d为数字、字母或下划线，</li>
+<li>如果指标(isSearchF)为真，则必须有分组ID</li>
+<li>逻辑类型(condLogicTypes)为数组</li>
+<li></li>
+<li>field下所有字段必须存在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    baseTable: &apos;user&apos;,</div><div class="line">    // 一个Tab中对应的多张表中的有信息的配置字段</div><div class="line">    configFields: &#123;</div><div class="line">        user: &#123;</div><div class="line">            tableConf: &#123;</div><div class="line">                isShowTime: true,</div><div class="line">                timeField: &apos;time&apos;</div><div class="line">            &#125;,</div><div class="line">            fields: &#123;</div><div class="line">                &apos;userId&apos;: &#123;</div><div class="line">                    value: &apos;1000&apos;, // 新增没有</div><div class="line">                    showName: &apos;用户ID&apos;,</div><div class="line">                    isCond: true,</div><div class="line">                    condRequire: &apos;true&apos;,</div><div class="line">                    condType: &apos;checkbox&apos;,</div><div class="line">                    condItems: [</div><div class="line">                        &#123;</div><div class="line">                            &apos;name&apos;: &apos;文章阅读量&apos;,</div><div class="line">                            &apos;value&apos;: &apos;1000&apos;</div><div class="line">                        &#125;</div><div class="line">                    ],</div><div class="line">                    condLogicTypes: [</div><div class="line">                        &apos;=&apos;,</div><div class="line">                        &apos;&gt;=&apos;,</div><div class="line">                        &apos;like&apos;</div><div class="line">                    ],</div><div class="line">                    isSearchF: &apos;true&apos;,</div><div class="line">                    isSearchFDefault: &apos;true&apos;,</div><div class="line">                    isSearchFRequire: &apos;true&apos;,</div><div class="line">                    isJoin: &apos;true&apos;,</div><div class="line">                    groupId: &apos;100&apos;,</div><div class="line">                    isDim: &apos;true&apos;</div><div class="line">                &#125;,</div><div class="line">                &apos;userName&apos;: &#123;</div><div class="line">                    value: &apos;1001&apos;, // 新增没有</div><div class="line">                    showName: &apos;用户ID&apos;,</div><div class="line">                    isCond: true,</div><div class="line">                    condRequire: &apos;true&apos;,</div><div class="line">                    condType: &apos;checkbox&apos;,</div><div class="line">                    condItems: [</div><div class="line">                        &#123;</div><div class="line">                            &apos;name&apos;: &apos;文章阅读量&apos;,</div><div class="line">                            &apos;value&apos;: &apos;1000&apos;</div><div class="line">                        &#125;</div><div class="line">                    ],</div><div class="line">                    condLogicTypes: [</div><div class="line">                        &apos;=&apos;,</div><div class="line">                        &apos;&gt;=&apos;,</div><div class="line">                        &apos;like&apos;</div><div class="line">                    ],</div><div class="line">                    isSearchF: &apos;true&apos;,</div><div class="line">                    isSearchFDefault: &apos;true&apos;,</div><div class="line">                    isSearchFRequire: &apos;true&apos;,</div><div class="line">                    isJoin: &apos;true&apos;,</div><div class="line">                    groupId: &apos;100&apos;,</div><div class="line">                    isDim: &apos;true&apos;</div><div class="line">                &#125;,</div><div class="line">                &apos;time&apos;: &#123;</div><div class="line">                    value: &apos;1001&apos;, // 新增没有</div><div class="line">                    showName: &apos;用户ID&apos;,</div><div class="line">                    isCond: true,</div><div class="line">                    condRequire: &apos;true&apos;,</div><div class="line">                    condType: &apos;dateRange&apos;,</div><div class="line">                    condItems: [],</div><div class="line">                    condLogicTypes: [],</div><div class="line">                    isSearchF: &apos;true&apos;,</div><div class="line">                    isSearchFDefault: &apos;true&apos;,</div><div class="line">                    isSearchFRequire: &apos;true&apos;,</div><div class="line">                    isJoin: &apos;true&apos;,</div><div class="line">                    groupId: &apos;100&apos;,</div><div class="line">                    isDim: &apos;true&apos;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="验证器"><a href="#验证器" class="headerlink" title="验证器"></a>验证器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    baseTable: &#123;type: &quot;string&quot;, required: true&#125;,</div><div class="line">    tabConf: [</div><div class="line">        &#123;</div><div class="line">            type: &quot;object&quot;,</div><div class="line">            required: true,</div><div class="line">            fields: &#123;</div><div class="line">                isShowTime: &#123;type: &quot;boolean&quot;, required: true&#125;,</div><div class="line">                timeField: &#123;type: &quot;string&quot;, required: true&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            validator(rule, value, callback, source, options) &#123;</div><div class="line">                console.log(value)</div><div class="line">                if (value.isShowTime) &#123;</div><div class="line">                    if (!value.timeField) &#123;</div><div class="line">                        callback(new Error(&apos;如果使用时间，则必须选择时间字段!&apos;));</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    fieldItem: [</div><div class="line">        &#123;</div><div class="line">            type: &apos;object&apos;,</div><div class="line">            required: true,</div><div class="line">            fields: &#123;</div><div class="line">                isJoin: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                isDim: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                value: &#123;</div><div class="line">                    type: &quot;string&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                showName: &#123;</div><div class="line">                    type: &quot;string&quot;,</div><div class="line">                    required: true,</div><div class="line">                    min: 1,</div><div class="line">                    max: 6</div><div class="line">                &#125;,</div><div class="line">                condItems: &#123;</div><div class="line">                    type: &quot;string&quot;,</div><div class="line">                    required: true,</div><div class="line">                    pattern: /^([\w]+[\:]&#123;2&#125;[\w]+\,)*([\w]+[\:]&#123;2&#125;[\w]+)$/</div><div class="line">                &#125;,</div><div class="line">                isCond: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                condType: &#123;</div><div class="line">                    type: &quot;enum&quot;,</div><div class="line">                    enum: [&apos;select&apos;, &apos;multi&apos;]</div><div class="line">                &#125;,</div><div class="line">                condLogicTypes: &#123;</div><div class="line">                    type: &quot;array&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                condRequire: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                isCondDefault: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                isSearchF: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                isSearchFDefault: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                isSearchFRequire: &#123;</div><div class="line">                    type: &quot;boolean&quot;,</div><div class="line">                    required: true</div><div class="line">                &#125;,</div><div class="line">                groupId: &#123;</div><div class="line">                    type: &quot;string&quot;,</div><div class="line">                    required: true,</div><div class="line">                    pattern: /^[\d]+$/</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="格式化数据结构"><a href="#格式化数据结构" class="headerlink" title="格式化数据结构"></a>格式化数据结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        prop: &apos;baseTable&apos;,</div><div class="line">        value: &apos;1111&apos;,</div><div class="line">        path: []</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        prop: &apos;tabConf&apos;,</div><div class="line">        value: &#123;</div><div class="line">            isShowTime: true,</div><div class="line">            timeField: &apos;day&apos;</div><div class="line">        &#125;,</div><div class="line">        path: [&apos;table1&apos;]</div><div class="line">        </div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        prop: &apos;fieldItem&apos;,</div><div class="line">        value: &#123;</div><div class="line">            isJoin: true,</div><div class="line">            isDim: true,</div><div class="line">            value: &apos;1000&apos;,</div><div class="line">            showName: &apos;day&apos;,</div><div class="line">            condItems: &apos;a::b,c::d&apos;,</div><div class="line">            isCond: true,</div><div class="line">            condType: &apos;select&apos;,</div><div class="line">            condLogicTypes: [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;],</div><div class="line">            condRequire: true,</div><div class="line">            isCondDefault: true,</div><div class="line">            isSearchF: true,</div><div class="line">            isSearchFDefault: true,</div><div class="line">            isSearchFRequire: true,</div><div class="line">            groupId: &apos;10&apos;</div><div class="line">        &#125;,</div><div class="line">        path: [&apos;table1&apos;, &apos;field1&apos;]</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h1 id="进行验证"><a href="#进行验证" class="headerlink" title="进行验证"></a>进行验证</h1>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/10/20/JavaScript进行数据验证/" class="archive-article-date">
+  	<time datetime="2017-10-20T14:41:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-10-20</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/validate/">validate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/24/webFont汇总/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          webFont汇总
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/14/Sizzle深入理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Sizzle深入理解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JavaScript进行数据验证" data-title="JavaScript进行数据验证" data-url="http://yoursite.com/2017/10/20/JavaScript进行数据验证/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

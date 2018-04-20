@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Sizzle深入理解 | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文内容主要“抄袭”与高云所著的《jQuery技术内幕》，算是我学习完Sizzle源码后的一点总结。本文依赖于jQuery-1.7.2，本文将忽略掉很多细节，着重从整体结构和思路讲解sizzle根据一个选择器进行dom元素匹配。  如何获取Dom元素？在不同的阶段，对其认识，理解都是完全不同的，它一直困扰着我，也一直提醒着我。它是前端开发的起点，也是前端开发的梦魇。虽然如今新框架让我们可以从">
+<meta name="keywords" content="jQuery,JavaScript,Sizzle,获取Dom元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sizzle深入理解">
+<meta property="og:url" content="http://yoursite.com/2017/06/14/Sizzle深入理解/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="本文内容主要“抄袭”与高云所著的《jQuery技术内幕》，算是我学习完Sizzle源码后的一点总结。本文依赖于jQuery-1.7.2，本文将忽略掉很多细节，着重从整体结构和思路讲解sizzle根据一个选择器进行dom元素匹配。  如何获取Dom元素？在不同的阶段，对其认识，理解都是完全不同的，它一直困扰着我，也一直提醒着我。它是前端开发的起点，也是前端开发的梦魇。虽然如今新框架让我们可以从">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sizzle深入理解">
+<meta name="twitter:description" content="本文内容主要“抄袭”与高云所著的《jQuery技术内幕》，算是我学习完Sizzle源码后的一点总结。本文依赖于jQuery-1.7.2，本文将忽略掉很多细节，着重从整体结构和思路讲解sizzle根据一个选择器进行dom元素匹配。  如何获取Dom元素？在不同的阶段，对其认识，理解都是完全不同的，它一直困扰着我，也一直提醒着我。它是前端开发的起点，也是前端开发的梦魇。虽然如今新框架让我们可以从">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-Sizzle深入理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sizzle深入理解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文内容主要“抄袭”与高云所著的《jQuery技术内幕》，算是我学习完Sizzle源码后的一点总结。本文依赖于jQuery-1.7.2，本文将忽略掉很多细节，着重从整体结构和思路讲解sizzle根据一个选择器进行dom元素匹配。</p>
+</blockquote>
+<p>如何获取Dom元素？在不同的阶段，对其认识，理解都是完全不同的，它一直困扰着我，也一直提醒着我。它是前端开发的起点，也是前端开发的梦魇。虽然如今新框架让我们可以从中解放出来，但是能更高的理解它，仍对我意义重大。jQuery如何实现兼容各种浏览器的Dom元素查找器是我在前端开发的学习和工作中一直都在思考的问题。本文将简述jQuery的Sizzle，这个纯JavaScript实现的CSS选择器引擎。</p>
+<p>在jQuery中，我们可以通过<code>$(&#39;#main&#39;)</code>、<code>$(&#39;#main .main-box&#39;)</code>、<code>$(&#39;#main .main-box p&#39;)</code>甚至于<code>$(&#39;#main .main-box p ul li:eq(2)&#39;)</code>、<code>$(&#39;#main .main-box p ul li:eq(2) input[name=&quot;key&quot;]&#39;)</code>来查找Dom元素。Sizzle如何实现这些功能，而我们又将如何高效的使用这些功能，都需要我们深入源码，思考其工作原理。</p>
+<h1 id="先看入口"><a href="#先看入口" class="headerlink" title="先看入口"></a>先看入口</h1><p>如下是jQuery的初始化方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">jQuery.fn = jQuery.prototype = &#123;</div><div class="line">		constructor: jQuery,</div><div class="line">		init: function( selector, context, rootjQuery ) &#123;</div><div class="line">      ...</div><div class="line">      // The body element only exists once, optimize finding it</div><div class="line">			if ( selector === &quot;body&quot; &amp;&amp; !context &amp;&amp; document.body ) &#123;</div><div class="line">				...</div><div class="line">			&#125;</div><div class="line">      ...</div><div class="line">			// Handle HTML strings</div><div class="line">			if ( typeof selector === &quot;string&quot; ) &#123;</div><div class="line">				// Are we dealing with HTML string or an ID?</div><div class="line">				if ( selector.charAt(0) === &quot;&lt;&quot; &amp;&amp; selector.charAt( selector.length - 1 ) === &quot;&gt;&quot; &amp;&amp; selector.length &gt;= 3 ) &#123;</div><div class="line">          ...</div><div class="line">				&#125; else &#123;</div><div class="line">					match = quickExpr.exec( selector );</div><div class="line">				&#125;</div><div class="line">				// Verify a match, and that no context was specified for #id</div><div class="line">				if ( match &amp;&amp; (match[1] || !context) ) &#123;</div><div class="line"></div><div class="line">					// HANDLE: $(html) -&gt; $(array)</div><div class="line">					if ( match[1] ) &#123;</div><div class="line">            ...</div><div class="line">					// HANDLE: $(&quot;#id&quot;)</div><div class="line">					&#125; else &#123;</div><div class="line">						elem = document.getElementById( match[2] );</div><div class="line"></div><div class="line">						// Check parentNode to catch when Blackberry 4.6 returns</div><div class="line">						// nodes that are no longer in the document #6963</div><div class="line">						if ( elem &amp;&amp; elem.parentNode ) &#123;</div><div class="line">							// Handle the case where IE and Opera return items</div><div class="line">							// by name instead of ID</div><div class="line">							if ( elem.id !== match[2] ) &#123;</div><div class="line">								return rootjQuery.find( selector );</div><div class="line">							&#125;</div><div class="line"></div><div class="line">							// Otherwise, we inject the element directly into the jQuery object</div><div class="line">							this.length = 1;</div><div class="line">							this[0] = elem;</div><div class="line">						&#125;</div><div class="line"></div><div class="line">						this.context = document;</div><div class="line">						this.selector = selector;</div><div class="line">						return this;</div><div class="line">					&#125;</div><div class="line">				// HANDLE: $(expr, $(...))</div><div class="line">				&#125; else if ( !context || context.jquery ) &#123;</div><div class="line">          ...</div><div class="line">				// HANDLE: $(expr, context)</div><div class="line">				// (which is just equivalent to: $(context).find(expr)</div><div class="line">				&#125; else &#123;</div><div class="line">					return this.constructor( context ).find( selector );</div><div class="line">				&#125;</div><div class="line">			// HANDLE: $(function)</div><div class="line">			// Shortcut for document ready</div><div class="line">			&#125; else if ( jQuery.isFunction( selector ) ) &#123;</div><div class="line">				...</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			if ( selector.selector !== undefined ) &#123;</div><div class="line">				this.selector = selector.selector;</div><div class="line">				this.context = selector.context;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			return jQuery.makeArray( selector, this );</div><div class="line">		&#125;,</div></pre></td></tr></table></figure>
+<p>在jQuery的init方法中，根据输入参数的类型，来进行不同的处理。其中有几个地方是和Dom查找相关的。</p>
+<h2 id="selector-quot-body-quot-amp-amp-context-amp-amp-document-body"><a href="#selector-quot-body-quot-amp-amp-context-amp-amp-document-body" class="headerlink" title="selector === &quot;body&quot; &amp;&amp; !context &amp;&amp; document.body"></a><code>selector === &quot;body&quot; &amp;&amp; !context &amp;&amp; document.body</code></h2><p>输入选择器为body时，且没有上下文时，直接获取body元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if ( selector === &quot;body&quot; &amp;&amp; !context &amp;&amp; document.body ) &#123;</div><div class="line">  this.context = document; // 返回jQuery对象的上下文是document</div><div class="line">  this[0] = document.body; // 返回jQuery对象的第一个元素是document.body</div><div class="line">  this.selector = selector; // 返回jQuery对象的的选择器为入参selector，即&apos;body&apos;</div><div class="line">  this.length = 1; // 返回jQuery对象的长度为1</div><div class="line">  return this; // 返回jQuery对象</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="typeof-selector-“string”"><a href="#typeof-selector-“string”" class="headerlink" title="typeof selector === “string”"></a>typeof selector === “string”</h2><p>如果输入选择器为非’body’的字符串，将首先看选择器是否是HTML代码或者为’#id’这样的ID选择器。这部分的关键地方在于用<code>quickExpr = /^(?:[^#&lt;]*(&lt;[\w\W]+&gt;)[^&gt;]*$|#([\w\-]*)$)/</code>正则去匹配selector。它匹配一个类似HTML片段的字符串或者一个以#开头的字符串,请看如下例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">|selector               | quickExpr.exec(selector)           |</div><div class="line">|:----------------------|:-----------------------------------|</div><div class="line">|&apos;#target&apos;              | [&quot;#target&quot;, undefined, target]     |</div><div class="line">|&apos;&lt;div&gt;&apos;                | [&quot;&lt;div&gt;&quot;, &quot;&lt;div&gt;&quot;, undefined]      |</div><div class="line">|&apos;div&apos;                  | null                               |</div><div class="line">|&apos;&lt;div&gt;&lt;img&gt;&lt;/div&gt;&apos;     | [&quot;&lt;div&gt;&lt;img&gt;&lt;/div&gt;&quot;, &quot;&lt;div&gt;&lt;img&gt;&lt;/div&gt;&quot;, undefined]  |</div></pre></td></tr></table></figure></p>
+<p>需要考虑的是其中的’#target’这种情况。此时直接使用getElementById获取元素。</p>
+<p>如果匹配失败则认为selector是选择器，调用jQuery的find方法来处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// HANDLE: $(expr, $(...))</div><div class="line">&#125; else if ( !context || context.jquery ) &#123;</div><div class="line">  ...</div><div class="line">// HANDLE: $(expr, context)</div><div class="line">// (which is just equivalent to: $(context).find(expr)</div><div class="line">&#125; else &#123;</div><div class="line">  return this.constructor( context ).find( selector );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>而jQuery的find方法，就是sizzle。</p>
+<h2 id="先窥探一下Sizzle"><a href="#先窥探一下Sizzle" class="headerlink" title="先窥探一下Sizzle"></a>先窥探一下Sizzle</h2><p>首先看下sizzle这个函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var Sizzle = function( selector, context, results, seed ) &#123;</div><div class="line">	...</div><div class="line">	return results;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>省略调所有的函数内容，sizzle函数结构就变得很简单了。它接受选择器，上下文对象，结果集，过滤元素集合。都是对传入结果集的进一步筛选。</p>
+<p>当sizzle接受到一个字符串后，将会对其进行类似如下的处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">var selector = &apos;#main .head &gt; p ul li:eq(3) , #main .head &gt; p ul li:eq(5)&apos;;</div><div class="line">var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|[&apos;&quot;][^&apos;&quot;]*[&apos;&quot;]|[^\[\]&apos;&quot;]+)+\]|\\.|[^ &gt;+~,(\[\\]+)+|[&gt;+~])(\s*,\s*)?((?:.|\r|\n)*)/g;</div><div class="line">var m, set, extra,</div><div class="line">parts = [],</div><div class="line">soFar = selector;</div><div class="line"></div><div class="line">// Reset the position of the chunker regexp (start from head)</div><div class="line">do &#123;</div><div class="line">  chunker.exec( &quot;&quot; );</div><div class="line">  m = chunker.exec( soFar );</div><div class="line"></div><div class="line">  if ( m ) &#123;</div><div class="line">    soFar = m[3];</div><div class="line"></div><div class="line">    parts.push( m[1] );</div><div class="line"></div><div class="line">    if ( m[2] ) &#123;</div><div class="line">      extra = m[3];</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125; while ( m );</div><div class="line">parts);</div><div class="line">extra);</div></pre></td></tr></table></figure></p>
+<p>如上代码执行完后，我们得到的parts和extra如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parts = [&quot;#main&quot;, &quot;.head&quot;, &quot;&gt;&quot;, &quot;p&quot;, &quot;ul&quot;, &quot;li:eq(3)&quot;];</div><div class="line">extra = &apos;#main .head &gt; p ul li:eq(5)&apos;;</div></pre></td></tr></table></figure></p>
+<p>现在我明白sizzle的一个基本原理了，就是化繁为简。通过chunker这个复杂的正则表达式，将选择器拆分成数组。如果有extra，只需要在对其调用一次sizzle就可以了。</p>
+<p>关于chunker这个正则表达式，后面再专门写一篇文章总结吧。</p>
+<p>后面的篇幅重点分析，sizzle如何对这个包含各种单一选择器信息的数组进行处理，从而精确匹配到dom元素。在这个过程中，sizzle对性能、代码结构组织的考虑让我犹如进了大观园，惊奇巧妙可谓无处不在啊！</p>
+<p>但是在进入这个过程前，我们还需要看一下sizzle的加速器。</p>
+<h1 id="利用浏览器原生API对查找过程进行加速"><a href="#利用浏览器原生API对查找过程进行加速" class="headerlink" title="利用浏览器原生API对查找过程进行加速"></a>利用浏览器原生API对查找过程进行加速</h1>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/06/14/Sizzle深入理解/" class="archive-article-date">
+  	<time datetime="2017-06-14T14:41:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sizzle/">Sizzle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/获取Dom元素/">获取Dom元素</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/20/JavaScript进行数据验证/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript进行数据验证
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/04/2.8.2、静态属性和方法－类型检测/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery技术内幕 2.8.2、静态属性和方法－类型检测</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Sizzle深入理解" data-title="Sizzle深入理解" data-url="http://yoursite.com/2017/06/14/Sizzle深入理解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

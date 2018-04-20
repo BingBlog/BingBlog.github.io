@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>SurviveJs-Webpack中文翻译文档-11拆分打包.md | BingBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Splitting Bundles目前我们应用的生产版本仅仅包含Javascript文件。这不是理想的。如我我们改变了应用，客户端还需要加载依赖。最好只需要加载改变的部分。如果依赖发生了改变，客户端仅需要加载依赖就行了。在实际生产中代码就该如此。 这就是代码拆分（bundle splitting）。我们可以将支持依赖打包为单独的文件，以利于客户端缓存。由于整个应用的大小没有改变。即使请求的数量会变">
+<meta name="keywords" content="学习,SurviveJs,Webpack,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SurviveJs-Webpack中文翻译文档-11拆分打包.md">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-11拆分打包-md/index.html">
+<meta property="og:site_name" content="BingBlog">
+<meta property="og:description" content="Splitting Bundles目前我们应用的生产版本仅仅包含Javascript文件。这不是理想的。如我我们改变了应用，客户端还需要加载依赖。最好只需要加载改变的部分。如果依赖发生了改变，客户端仅需要加载依赖就行了。在实际生产中代码就该如此。 这就是代码拆分（bundle splitting）。我们可以将支持依赖打包为单独的文件，以利于客户端缓存。由于整个应用的大小没有改变。即使请求的数量会变">
+<meta property="og:updated_time" content="2017-09-07T05:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SurviveJs-Webpack中文翻译文档-11拆分打包.md">
+<meta name="twitter:description" content="Splitting Bundles目前我们应用的生产版本仅仅包含Javascript文件。这不是理想的。如我我们改变了应用，客户端还需要加载依赖。最好只需要加载改变的部分。如果依赖发生了改变，客户端仅需要加载依赖就行了。在实际生产中代码就该如此。 这就是代码拆分（bundle splitting）。我们可以将支持依赖打包为单独的文件，以利于客户端缓存。由于整个应用的大小没有改变。即使请求的数量会变">
+  
+    <link rel="alternative" href="/atom.xml" title="BingBlog" type="application/atom+xml">
+  
+  
+  <script src="/style.js"></script>
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117958143-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117958143-1');
+</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Bing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Bing&#39;s coding and life!</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">源码库</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Bing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Bing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Bing&#39;s coding and life!</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/SurviveJs">SurviveJsWebpack中文翻译文档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BingBlog" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SurviveJs-Webpack中文翻译文档-11拆分打包-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SurviveJs-Webpack中文翻译文档-11拆分打包.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Splitting-Bundles"><a href="#Splitting-Bundles" class="headerlink" title="Splitting Bundles"></a>Splitting Bundles</h1><p>目前我们应用的生产版本仅仅包含Javascript文件。这不是理想的。如我我们改变了应用，客户端还需要加载依赖。最好只需要加载改变的部分。如果依赖发生了改变，客户端仅需要加载依赖就行了。在实际生产中代码就该如此。</p>
+<p>这就是代码拆分（bundle splitting）。我们可以将支持依赖打包为单独的文件，以利于客户端缓存。由于整个应用的大小没有改变。即使请求的数量会变多，但是缓存的好处足以弥补多请求带来的损失。</p>
+<p>比如，相比于一个单独的app.js(100kB),我们可以处理成app(10kB)vendor.js(90kB)。现在如果一个用户已经使用过该应用，那么效率将会更高。</p>
+<p>缓存会带来新的问题。我们将在下一章节来讲解。现在我们要对代码进行拆分。</p>
+<h2 id="配置一个vendor包"><a href="#配置一个vendor包" class="headerlink" title="配置一个vendor包"></a>配置一个<code>vendor</code>包</h2><p>我们的应用目前仅有一个单独的入口文件<code>app</code>。你也许还记得，我们的配置文件告诉Webpack的依赖依次从<code>app</code>入口文件开始处理，然后将文件以入口文件名称命名并以<code>.js</code>结尾输出到<code>build</code>出口文件中。</p>
+<p>为了进步改善，我们定义一个包含react的<code>vendor</code>入口。这是通过匹配依赖的名称来实现的。我们可以想本节后面讨论的那样来自动生成这些信息，但现在我想通过添加一个静态的数组来更好的描述这个想法。如下更改代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">const common = &#123;</div><div class="line">  // Entry accepts a path or an object of entries.</div><div class="line">  // We&apos;ll be using the latter form given it&apos;s</div><div class="line">  // convenient with more complex configurations.</div><div class="line">  entry: &#123;</div><div class="line">leanpub-start-insert</div><div class="line">    app: PATHS.app,</div><div class="line">    vendor: [&apos;react&apos;]</div><div class="line">leanpub-end-insert</div><div class="line">leanpub-start-delete</div><div class="line">    app: PATHS.app</div><div class="line">leanpub-end-delete</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: PATHS.build,</div><div class="line">    filename: &apos;[name].js&apos;</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">      title: &apos;Webpack demo&apos;</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>我们现在有两个分离的入口，后者叫做<strong>entry chunks</strong>。<strong>Understanding Chunks</strong>章节将会深入讲解其它的模块类型。现在我们有了一个入口和出口的映射配置。<code>[name].js</code>将以入口文件的名称自动生成出口文件的名称。然后执行，<code>npm run build</code>,你将看到如下结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt; Webpack@1.0.0 build /Users/bing/Documents/workspase/Webpack/SurvivejsWebpack/webpack06-Splitting</div><div class="line">&gt; webpack</div><div class="line"></div><div class="line">Hash: 0653dc1114687102bdc1</div><div class="line">Version: webpack 1.13.2</div><div class="line">Time: 1825ms</div><div class="line">        Asset       Size  Chunks             Chunk Names</div><div class="line">       app.js    27.7 kB       0  [emitted]  app</div><div class="line">    vendor.js    23.4 kB       1  [emitted]  vendor</div><div class="line">   app.js.map     296 kB       0  [emitted]  app</div><div class="line">vendor.js.map     265 kB       1  [emitted]  vendor</div><div class="line">   index.html  236 bytes          [emitted]</div><div class="line">   [0] ./app/index.js 121 bytes &#123;0&#125; [built]</div><div class="line">   [0] multi vendor 28 bytes &#123;1&#125; [built]</div><div class="line">   [1] ./app/component.js 218 bytes &#123;0&#125; [built]</div><div class="line">    + 33 hidden modules</div><div class="line">Child html-webpack-plugin for &quot;index.html&quot;:</div><div class="line">        + 3 hidden modules</div></pre></td></tr></table></figure></p>
+<p>app.js和vendor.js分离开了。现在的输出还是比较大，显然，app.js应该明显的变小才能实现我们的目标。</p>
+<p>如果你查看最终生成的包，通过它包含的React可以发现默认的工作原理。</p>
+<p>我们可以用Webpack的一个叫做<code>CommonsChunkPlugin</code>插件的插件来实现我们所期望的包分离。</p>
+<h2 id="构建CommonsChunkPlugin"><a href="#构建CommonsChunkPlugin" class="headerlink" title="构建CommonsChunkPlugin"></a>构建CommonsChunkPlugin</h2><p><strong><em><a href="https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin" target="_blank" rel="external">CommonsChunkPlugin</a></em></strong>是一个很强大也很复杂的插件。我们要学习的是一个很基本也很有用的例子。首先我们可以构建一个函数。</p>
+<p>为了今后更加方便，我们可以生成一个叫做<strong>manifest</strong>的文件。它包含了webpack用来启动应用的运行脚本和所有它需要的依赖。浙江可以避免严重的失效问题。尽管它需要浏览器多加载一个文件，它也可以使我们引入下一章会学习的可靠的缓存机制。</p>
+<p>如果我们不生成一个manifest文件，Webpack会在vendor包中生成运行脚本。当我们更改了应用的代码，应用包的哈西值将会更改。而此时，vendor包也会接受一个新的哈西值。这就是为什么我们要将manifest文件单独存放。</p>
+<blockquote>
+<p>在下一章学习时，如果你想实际操作以下，你可以去掉使其不生成manifest文件。更改代码后，你将会发现应用的包发生的变化。<br><strong>libs/parts.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">leanpub-start-insert</div><div class="line">exports.extractBundle = function(options) &#123;</div><div class="line">  const entry = &#123;&#125;;</div><div class="line">  entry[options.name] = options.entries;</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">    // Define an entry point needed for splitting.</div><div class="line">    entry: entry,</div><div class="line">    plugins: [</div><div class="line">      // Extract bundle and manifest files. Manifest is</div><div class="line">      // needed for reliable caching.</div><div class="line">      new webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        names: [options.name, &apos;manifest&apos;]</div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">leanpub-end-insert</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>由于上面的函数包含了入口信息，所以我们要删掉之前配置的vendor入口。<br><strong>webpack.config.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">const common = &#123;</div><div class="line">  // Entry accepts a path or an object of entries.</div><div class="line">  // We&apos;ll be using the latter form given it&apos;s</div><div class="line">  // convenient with more complex configurations.</div><div class="line">  entry: &#123;</div><div class="line">leanpub-start-insert</div><div class="line">    app: PATHS.app</div><div class="line">leanpub-end-insert</div><div class="line">leanpub-start-delete</div><div class="line">    app: PATHS.app,</div><div class="line">    vendor: [&apos;react&apos;]</div><div class="line">leanpub-end-delete</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: PATHS.build,</div><div class="line">    filename: &apos;[name].js&apos;</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">      title: &apos;Webpack demo&apos;</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">// Detect how npm is run and branch based on that</div><div class="line">switch(process.env.npm_lifecycle_event) &#123;</div><div class="line">  case &apos;build&apos;:</div><div class="line">    config = merge(</div><div class="line">      common,</div><div class="line">      &#123;</div><div class="line">        devtool: &apos;source-map&apos;</div><div class="line">      &#125;,</div><div class="line">      parts.setFreeVariable(</div><div class="line">        &apos;process.env.NODE_ENV&apos;,</div><div class="line">        &apos;production&apos;</div><div class="line">      ),</div><div class="line">leanpub-start-insert</div><div class="line">      parts.extractBundle(&#123;</div><div class="line">        name: &apos;vendor&apos;,</div><div class="line">        entries: [&apos;react&apos;]</div><div class="line">      &#125;),</div><div class="line">leanpub-end-insert</div><div class="line">      parts.minify(),</div><div class="line">      parts.setupCSS(PATHS.app)</div><div class="line">    );</div><div class="line">    break;</div><div class="line">  default:</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = validate(config);</div></pre></td></tr></table></figure></p>
+<p>如果现在执行 <code>npm run build</code>,你可以发现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; Webpack@1.0.0 build /Users/bing/Documents/workspase/Webpack/SurvivejsWebpack/webpack06-Splitting</div><div class="line">&gt; webpack</div><div class="line"></div><div class="line">Hash: 11284db48d6483090d79</div><div class="line">Version: webpack 1.13.2</div><div class="line">Time: 1492ms</div><div class="line">          Asset       Size  Chunks             Chunk Names</div><div class="line">         app.js    4.39 kB    0, 2  [emitted]  app</div><div class="line">      vendor.js    23.1 kB    1, 2  [emitted]  vendor</div><div class="line">    manifest.js  954 bytes       2  [emitted]  manifest</div><div class="line">     app.js.map    31.1 kB    0, 2  [emitted]  app</div><div class="line">  vendor.js.map     262 kB    1, 2  [emitted]  vendor</div><div class="line">manifest.js.map    8.73 kB       2  [emitted]  manifest</div><div class="line">     index.html  294 bytes          [emitted]</div><div class="line">   [0] ./app/index.js 121 bytes &#123;0&#125; [built]</div><div class="line">   [0] multi vendor 28 bytes &#123;1&#125; [built]</div><div class="line">   [1] ./app/component.js 218 bytes &#123;0&#125; [built]</div><div class="line">    + 33 hidden modules</div><div class="line">Child html-webpack-plugin for &quot;index.html&quot;:</div><div class="line">        + 3 hidden modules</div></pre></td></tr></table></figure></p>
+<p>现在就实现了我们的目标。</p>
+<blockquote>
+<p>除此之外，我们可以定义模块动态加载。这需要通过 require.ensure来实现。我们将在<strong><em>Understanding Chunks</em></strong>章节详细讲解。</p>
+</blockquote>
+<h2 id="自动加载dependencies到vendor包"><a href="#自动加载dependencies到vendor包" class="headerlink" title="自动加载dependencies到vendor包"></a>自动加载<code>dependencies</code>到<code>vendor</code>包</h2><p>如果你的依赖是按照<code>dependencies</code>和<code>devDependencies</code>来严格区分的，你可以使Webpack来通过<code>dependencies</code>字段信息来自动将依赖大包到<code>vendor</code>目录中。可参考：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">const pkg = require(&apos;./package.json&apos;);</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">const common = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    app: PATHS.app,</div><div class="line">    vendor: Object.keys(pkg.dependencies)</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>也可以仅将特定的依赖打包到<code>vendor</code>目录，仅仅需要多添加一些代码。也可以使用<code>filter</code>来去掉你不想打报道`vendor｀的代码。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>现在情况要好多了。请注意<code>app</code>包要比<code>vendor</code>包小的多。为了更好的利用包分离，我们可以进行缓存构建。这可以通过增加缓存哈西数来实现。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-11拆分打包-md/" class="archive-article-date">
+  	<time datetime="2016-10-13T08:39:21.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SurviveJs/">SurviveJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-12设置hash文件名-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SurviveJs-Webpack中文翻译文档-12设置hash文件名.md
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/13/SurviveJs-Webpack中文翻译文档-10设置环境变量-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SurviveJs-Webpack中文翻译文档-10设置环境变量.md</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SurviveJs-Webpack中文翻译文档-11拆分打包-md" data-title="SurviveJs-Webpack中文翻译文档-11拆分打包.md" data-url="http://yoursite.com/2016/10/13/SurviveJs-Webpack中文翻译文档-11拆分打包-md/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2121061"></script>
+</section>
+
+    
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Bing
+    	</div>
+      	<div class="https://bingblog.github.io" target="_blank">BingBlog</a>  Theme <a href="https://github.com/BingBlog" target="_blank">BingBlog</a> by Bing
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Sizzle/" style="font-size: 10px;">Sizzle</a> <a href="/tags/SurviveJs/" style="font-size: 17.5px;">SurviveJs</a> <a href="/tags/Webpack/" style="font-size: 17.5px;">Webpack</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/webFont/" style="font-size: 10px;">webFont</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/布局/" style="font-size: 12.5px;">布局</a> <a href="/tags/获取Dom元素/" style="font-size: 10px;">获取Dom元素</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/SurvivejsWebpack#survivejswebpack">SurviveJs翻译源码</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/BingBlog/BingBlog">博客源码</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
